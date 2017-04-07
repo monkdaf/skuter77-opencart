@@ -1,6 +1,6 @@
-<?php echo $header; 
+<?php echo $header;
 $theme_options = $this->registry->get('theme_options');
-$config = $this->registry->get('config'); 
+$config = $this->registry->get('config');
 $background_status = false;
 $product_page = true;
 include('catalog/view/theme/'.$config->get('config_template').'/template/new_elements/wrapper_top.tpl'); ?>
@@ -36,20 +36,20 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
      								zoomWindowHeight: 500
      				    		});
      			    		<?php } ?>
-     			    		
+
      			    		var z_index = 0;
-     			    		
+
      			    		$(document).on('click', '.open-popup-image', function () {
      			    		  $('.popup-gallery').magnificPopup('open', z_index);
      			    		  return false;
      			    		});
-			    		
+
      			    		$('.thumbnails a, .thumbnails-carousel a').click(function() {
      			    			var smallImage = $(this).attr('data-image');
      			    			var largeImage = $(this).attr('data-zoom-image');
-     			    			var ez =   $('#image').data('elevateZoom');	
-     			    			$('#ex1').attr('href', largeImage);  
-     			    			ez.swaptheimage(smallImage, largeImage); 
+     			    			var ez =   $('#image').data('elevateZoom');
+     			    			$('#ex1').attr('href', largeImage);
+     			    			ez.swaptheimage(smallImage, largeImage);
      			    			z_index = $(this).index('.thumbnails a, .thumbnails-carousel a');
      			    			return false;
      			    		});
@@ -62,24 +62,24 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			    	});
 			    </script>
 			    <?php } ?>
-			    <?php $image_grid = 7; $product_center_grid = 5; 
+			    <?php $image_grid = 7; $product_center_grid = 5;
 			    if ($theme_options->get( 'product_image_size' ) == 1) {
 			    	$image_grid = 4; $product_center_grid = 8;
 			    }
-			    
+
 			    if ($theme_options->get( 'product_image_size' ) == 3) {
 			    	$image_grid = 8; $product_center_grid = 4;
 			    }
 			    ?>
 			    <div class="col-sm-<?php echo $image_grid; ?> popup-gallery">
-			      <?php 
+			      <?php
 			      $product_image_top = $modules->getModules('product_image_top');
-			      if( count($product_image_top) ) { 
+			      if( count($product_image_top) ) {
 			      	foreach ($product_image_top as $module) {
 			      		echo $module;
 			      	}
 			      } ?>
-			         
+
 			      <div class="row">
 			      	  <?php if (($images || $theme_options->get( 'product_image_zoom' ) != 2) && $theme_options->get( 'position_image_additional' ) == 2) { ?>
 			      	  <div class="col-sm-2">
@@ -95,7 +95,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 						</div>
 			      	  </div>
 			      	  <?php } ?>
-			      	  
+
 				      <div class="col-sm-<?php if($theme_options->get( 'position_image_additional' ) == 2) { echo 10; } else { echo 12; } ?>">
 				      	<?php if ($thumb) { ?>
 					      <div class="product-image <?php if($theme_options->get( 'product_image_zoom' ) != 2) { if($theme_options->get( 'product_image_zoom' ) == 1) { echo 'inner-cloud-zoom'; } else { echo 'cloud-zoom'; } } ?>">
@@ -115,7 +115,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 					      	 <?php } elseif($theme_options->get( 'display_text_new' ) != '0' && $theme_options->isLatestProduct( $product_id )) { ?>
      					      	 <div class="new"><?php if($theme_options->get( 'new_text', $config->get( 'config_language_id' ) ) != '') { echo $theme_options->get( 'new_text', $config->get( 'config_language_id' ) ); } else { echo 'New'; } ?></div>
 					      	 <?php } ?>
-					      	 
+
 					     	 <a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" id="ex1" <?php if($theme_options->get( 'product_image_zoom' ) == 2) { ?>class="popup-image"<?php } else { echo 'class="open-popup-image"'; } ?>><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" itemprop="image" data-zoom-image="<?php echo $popup; ?>" /></a>
 					      </div>
 					  	 <?php } else { ?>
@@ -124,7 +124,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 					  	 </div>
 					  	 <?php } ?>
 				      </div>
-				      
+
 				      <?php if (($images || $theme_options->get( 'product_image_zoom' ) != 2) && $theme_options->get( 'position_image_additional' ) != 2) { ?>
 				      <div class="col-sm-12">
 				           <div class="overflow-thumbnails-carousel clearfix">
@@ -137,7 +137,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
      						     <?php } ?>
      					      </div>
 					      </div>
-					      
+
 					      <script type="text/javascript">
 					           $(document).ready(function() {
 					             $(".thumbnails-carousel").owlCarousel({
@@ -157,10 +157,10 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 				      </div>
 				      <?php } ?>
 			      </div>
-			      
-			      <?php 
+
+			      <?php
 			      $product_image_bottom = $modules->getModules('product_image_bottom');
-			      if( count($product_image_bottom) ) { 
+			      if( count($product_image_bottom) ) {
 			      	foreach ($product_image_bottom as $module) {
 			      		echo $module;
 			      	}
@@ -169,18 +169,18 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 
 			    <div class="col-sm-<?php echo $product_center_grid; ?> product-center clearfix">
 			     <div itemprop="offerDetails" itemscope itemtype="http://data-vocabulary.org/Offer">
-			      <?php 
+			      <?php
 			      $product_options_top = $modules->getModules('product_options_top');
-			      if( count($product_options_top) ) { 
+			      if( count($product_options_top) ) {
 			      	foreach ($product_options_top as $module) {
 			      		echo $module;
 			      	}
 			      } ?>
-			      
-			      
+
+
 			      <?php if ($price) { ?>
 					  <div class="price">
-			        <?php if($theme_options->get( 'display_specials_countdown' ) == '1' && $special) { $countdown = rand(0, 5000)*rand(0, 5000); 
+			        <?php if($theme_options->get( 'display_specials_countdown' ) == '1' && $special) { $countdown = rand(0, 5000)*rand(0, 5000);
 			                  $product_detail = $theme_options->getDataProduct( $product_id );
 			                  $date_end = $product_detail['date_end'];
 			                  if($date_end != '0000-00-00' && $date_end) { ?>
@@ -217,9 +217,9 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			        <?php } ?>
 			      </div>
 			      <?php } ?>
-				  
 
-				  
+
+
 			      <div class="description">
 			        <?php if ($manufacturer) { ?>
 			        <span><?php echo $text_manufacturer; ?></span> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a><br />
@@ -231,30 +231,56 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			        <span><?php echo $text_stock; ?></span> <?php echo $stock; ?></div>
 					 <?php if ($attribute_groups) { ?>
 					 <div class="description description1">
-					 
+
 
       <?php foreach ($attribute_groups as $attribute_group) { ?>
-      
+
         <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
-      <?php if(in_array($attribute['attribute_id'], array(4,12,14,15))) { ?>
+      <?php if(in_array($attribute['attribute_id'], array(17,12,14,15))) { ?>
+<!--
+        <?php
+          switch ($attribute['attribute_id']):
+              case 12:
+        ?>
+                  <td><img src="/image/t1.jpg"></td>
+                  <td><?php echo $attribute['text']; ?></td>
+        <?php
+                  break;
+              case 15:
+        ?>
+                  <td><img src="/image/t2.jpg"></td>
+                  <td><?php echo $attribute['text']; ?></td>
+        <?php
+                  break;
+              case 17:
+        ?>
+                  <td><img src="/image/t3.jpg"></td>
+                  <td><?php echo $attribute['text']; ?></td>
+        <?php
+                  break;
+          endswitch;
+         ?>
+-->
+
           <span><?php echo $attribute['name']; ?>:</span>
           <?php echo $attribute['text']; ?></br>
+
          <?php } ?>
         <?php } ?>
-     
+
       <?php } ?>
-  
+
 
 					</div>
-				  <?php } ?>	
+				  <?php } ?>
 			     </div>
-			     
+
 			     <div id="product">
 			      <?php $product_options_center = $modules->getModules('product_options_center'); ?>
 			      <?php if ($options || count($product_options_center)) { ?>
 			      <div class="options">
 			        <?php foreach ($product_options_center as $module) { echo $module; } ?>
-			        
+
 			        <?php if ($options) { ?>
 			        <div class="options2">
      			        <h2><?php echo $text_option; ?></h2>
@@ -289,7 +315,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
      			              </label>
      			            </div>
      			            <?php } ?>
-     			            
+
      			            <?php if($theme_options->get( 'product_page_radio_style' ) == 1) { ?>
      			            <script type="text/javascript">
      			                 $(document).ready(function(){
@@ -318,7 +344,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
      			              </label>
      			            </div>
      			            <?php } ?>
-     			            
+
      			            <?php if($theme_options->get( 'product_page_checkbox_style' ) == 1) { ?>
      			            <script type="text/javascript">
      			                 $(document).ready(function(){
@@ -417,7 +443,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			        <?php } ?>
 			      </div>
 			      <?php } ?>
-			      
+
 			      <?php if ($recurrings) { ?>
 			      <div class="options">
 			          <h2><?php echo $text_payment_recurring ?></h2>
@@ -432,12 +458,12 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			          </div>
 			      </div>
 			      <?php } ?>
-			      
+
 			      <div class="cart">
 			        <div class="add-to-cart clearfix">
-			          <?php 
+			          <?php
 			          $product_enquiry = $modules->getModules('product_enquiry');
-			          if( count($product_enquiry) ) { 
+			          if( count($product_enquiry) ) {
 			          	foreach ($product_enquiry as $module) {
 			          		echo $module;
 			          	}
@@ -450,33 +476,33 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
      			          </div>
      			          <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" />
      			          <input type="button" value="<?php echo $button_cart; ?>" id="button-cart" rel="<?php echo $product_id; ?>" data-loading-text="<?php echo $text_loading; ?>" class="button" />
-						  
+
 						  <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" data-product_id = <?php echo $product_id; ?> class="btn btn-primary btn-lg btn-block callme">Быстрый заказ</button>
-     			         
-     			          <?php 
+
+     			          <?php
      			          $product_question = $modules->getModules('product_question');
-     			          if( count($product_question) ) { 
+     			          if( count($product_question) ) {
      			          	foreach ($product_question as $module) {
      			          		echo $module;
      			          	}
      			          } ?>
 			          <?php } ?>
 			        </div>
-			        
+
 			        <div class="links clearfix">
 			        	<a onclick="wishlist.add('<?php echo $product_id; ?>');"><?php if($theme_options->get( 'add_to_wishlist_text', $config->get( 'config_language_id' ) ) != '') { echo $theme_options->get( 'add_to_wishlist_text', $config->get( 'config_language_id' ) ); } else { echo 'В избранное'; } ?></a>
 			        	<a onclick="compare.add('<?php echo $product_id; ?>');"><?php if($theme_options->get( 'add_to_compare_text', $config->get( 'config_language_id' ) ) != '') { echo $theme_options->get( 'add_to_compare_text', $config->get( 'config_language_id' ) ); } else { echo 'Сравнение'; } ?></a>
 			        </div>
-			         
+
 			        <?php if ($minimum > 1) { ?>
 			        <div class="minimum"><?php echo $text_minimum; ?></div>
 			        <?php } ?>
 			      </div>
 			     </div><!-- End #product -->
-			      
-			      <?php 
+
+			      <?php
 			      $product_options_bottom = $modules->getModules('product_options_bottom');
-			      if( count($product_options_bottom) ) { 
+			      if( count($product_options_bottom) ) {
 			      	foreach ($product_options_bottom as $module) {
 			      		echo $module;
 			      	}
@@ -484,7 +510,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 		    	</div>
 		    </div>
     	</div>
-    	
+
     	<?php if($theme_options->get( 'custom_block', 'product_page', $config->get( 'config_language_id' ), 'status' ) == 1 || count($product_custom_block)) { ?>
     	<div class="col-md-3 col-sm-12"><noindex>
     	     <?php if($theme_options->get( 'custom_block', 'product_page', $config->get( 'config_language_id' ), 'status' ) == 1) { ?>
@@ -498,16 +524,16 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
     			</div>
     		</div>
     		<?php } ?>
-    		
+
     		<?php foreach ($product_custom_block as $module) { echo $module; } ?></noindex>
     	</div>
     	<?php } ?>
     </div>
   </div>
-  
-<div class="row">	
-					
-						<?php 
+
+<div class="row">
+
+						<?php
 						$contentbottom = $modules->getModules('content_bottom');
 						if( count($contentbottom) ) { ?>
 							<?php
@@ -516,43 +542,43 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 							}
 							?>
 						<?php } ?>
-					
+
 				</div>
-  
-  <?php 
+
+  <?php
   $product_over_tabs = $modules->getModules('product_over_tabs');
-  if( count($product_over_tabs) ) { 
+  if( count($product_over_tabs) ) {
   	foreach ($product_over_tabs as $module) {
   		echo $module;
   	}
   } ?>
-  
-  <?php 
+
+  <?php
   	  $language_id = $config->get( 'config_language_id' );
 	  $tabs = array();
-	  
+
 	  $tabs[] = array(
 	  	'heading' => $tab_description,
 	  	'content' => 'description',
 	  	'sort' => 1
 	  );
-	  
-	  if ($attribute_groups) { 
+
+	  if ($attribute_groups) {
 		  $tabs[] = array(
 		  	'heading' => $tab_attribute,
 		  	'content' => 'attribute',
 		  	'sort' => 3
 		  );
 	  }
-	  
-	  if ($review_status) { 
+
+	  if ($review_status) {
 	  	  $tabs[] = array(
 	  	  	'heading' => $tab_review,
 	  	  	'content' => 'review',
 	  	  	'sort' => 5
 	  	  );
 	  }
-	  	  	  
+
 	  if(is_array($config->get('product_tabs'))) {
 		  foreach($config->get('product_tabs') as $tab) {
 		  	if($tab['status'] == 1 || $tab['product_id'] == $product_id) {
@@ -573,7 +599,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 		  	}
 		  }
 	  }
-	  
+
 	  usort($tabs, "cmp_by_optionNumber");
   ?>
   <div id="tabs" class="htabs">
@@ -636,7 +662,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 	  <div class="form-group required">
 	    <div class="col-sm-12">
 	         <label class="control-label"><?php echo $entry_rating; ?></label>
-	        
+
 	       <div class="rating set-rating">
 	          <i class="fa fa-star" data-value="1"></i>
 	          <i class="fa fa-star" data-value="2"></i>
@@ -658,7 +684,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 	                    }
 	                })
 	            })
-	            
+
 	            $('.set-rating i').mouseleave(function(){
 	                var rate = $('input[name="rating"]:checked').val();
 	                rate = parseInt(rate);
@@ -672,7 +698,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 	                    }
 	                  })
 	            })
-	            
+
 	            $('.set-rating i').click(function(){
 	                $('input[name="rating"]:nth('+ ($(this).data('value')-1) +')').prop('checked', true);
 	            });
@@ -713,7 +739,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
   </div>
   <?php } ?>
 
-  
+
 </div>
 			<div class="row">
       <div class="col-md-12"><div class="text-right"><?php if ($tags) { ?>
@@ -745,14 +771,14 @@ $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 		},
 		success: function(json) {
 			$('.alert, .text-danger').remove();
-			
+
 			if (json['success']) {
 				$('#recurring-description').html(json['success']);
 			}
 		}
 	});
 });
-//--></script> 
+//--></script>
 <script type="text/javascript"><!--
 $('#button-cart').on('click', function() {
 	$.ajax({
@@ -774,7 +800,7 @@ $('#button-cart').on('click', function() {
 				if (json['error']['option']) {
 					for (i in json['error']['option']) {
 						var element = $('#input-option' + i.replace('_', '-'));
-						
+
 						if (element.parent().hasClass('input-group')) {
 							element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
 						} else {
@@ -782,15 +808,15 @@ $('#button-cart').on('click', function() {
 						}
 					}
 				}
-				
+
 				if (json['error']['recurring']) {
 					$('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
 				}
-				
+
 				// Highlight any found errors
 				$('.text-danger').parent().addClass('has-error');
 			}
-			
+
 			if (json['success']) {
 				$.notify({
 					message: json['success'],
@@ -829,9 +855,9 @@ $('#button-cart').on('click', function() {
 							'<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
 						'</div>' +
 						'<a href="{3}" target="{4}" data-notify="url"></a>' +
-					'</div>' 
+					'</div>'
 				});
-				
+
 				$('#cart_block #cart_content').load('index.php?route=common/cart/info #cart_content_ajax');
 				$('#cart_block #total_price_ajax').load('index.php?route=common/cart/info #total_price');
 				$('#cart_block .cart-count').load('index.php?route=common/cart/info #total_count_ajax');
@@ -842,7 +868,7 @@ $('#button-cart').on('click', function() {
      	}
 	});
 });
-//--></script> 
+//--></script>
 <script type="text/javascript"><!--
 $('.date').datetimepicker({
 	pickTime: false
@@ -856,20 +882,20 @@ $('.datetime').datetimepicker({
 $('.time').datetimepicker({
 	pickDate: false
 });
-		
+
 $('button[id^=\'button-upload\']').on('click', function() {
 	var node = this;
-	
+
 	$('#form-upload').remove();
-	
+
 	$('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
-	
+
 	$('#form-upload input[name=\'file\']').trigger('click');
-	
+
 	timer = setInterval(function() {
 		if ($('#form-upload input[name=\'file\']').val() != '') {
 			clearInterval(timer);
-			
+
 			$.ajax({
 				url: 'index.php?route=tool/upload',
 				type: 'post',
@@ -886,14 +912,14 @@ $('button[id^=\'button-upload\']').on('click', function() {
 				},
 				success: function(json) {
 					$('.text-danger').remove();
-					
+
 					if (json['error']) {
 						$(node).parent().find('input').after('<div class="text-danger">' + json['error'] + '</div>');
 					}
-					
+
 					if (json['success']) {
 						alert(json['success']);
-						
+
 						$(node).parent().find('input').attr('value', json['code']);
 					}
 				},
@@ -904,17 +930,17 @@ $('button[id^=\'button-upload\']').on('click', function() {
 		}
 	}, 500);
 });
-//--></script> 
+//--></script>
 <script type="text/javascript"><!--
 $('#review').delegate('.pagination a', 'click', function(e) {
 	e.preventDefault();
-	
+
     $('#review').fadeOut('slow');
-        
+
     $('#review').load(this.href);
-    
+
     $('#review').fadeIn('slow');
-});         
+});
 
 $('#review').load('index.php?route=product/product/review&product_id=<?php echo $product_id; ?>');
 
@@ -932,14 +958,14 @@ $('#button-review').on('click', function() {
         },
         success: function(json) {
 			$('.alert-success, .alert-danger').remove();
-            
+
 			if (json['error']) {
                 $('#review').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
             }
-            
+
             if (json['success']) {
                 $('#review').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
-                                
+
                 $('input[name=\'name\']').val('');
                 $('textarea[name=\'text\']').val('');
                 $('input[name=\'rating\']:checked').prop('checked', false);
@@ -950,7 +976,7 @@ $('#button-review').on('click', function() {
 </script>
 
 <script type="text/javascript"><!--
-$(document).ready(function() {     
+$(document).ready(function() {
 	$('.popup-gallery').magnificPopup({
 		delegate: 'a.popup-image',
 		type: 'image',
@@ -970,7 +996,7 @@ $(document).ready(function() {
 		}
 	});
 });
-//--></script> 
+//--></script>
 
 <script type="text/javascript">
 var ajax_price = function() {
@@ -1001,38 +1027,38 @@ $('.product-info input[type=\'text\'], .product-info input[type=\'hidden\'], .pr
 <script type="text/javascript">
 $.fn.tabs = function() {
 	var selector = this;
-	
+
 	this.each(function() {
-		var obj = $(this); 
-		
+		var obj = $(this);
+
 		$(obj.attr('href')).hide();
-		
+
 		$(obj).click(function() {
 			$(selector).removeClass('selected');
-			
+
 			$(selector).each(function(i, element) {
 				$($(element).attr('href')).hide();
 			});
-			
+
 			$(this).addClass('selected');
-			
+
 			$($(this).attr('href')).show();
-			
+
 			return false;
 		});
 	});
 
 	$(this).show();
-	
+
 	$(this).first().click();
 };
 </script>
 
 <script type="text/javascript"><!--
 $('#tabs a').tabs();
-//--></script> 
+//--></script>
 
-<?php if($theme_options->get( 'product_image_zoom' ) != 2) { 
+<?php if($theme_options->get( 'product_image_zoom' ) != 2) {
 echo '<script type="text/javascript" src="catalog/view/theme/' . $config->get( 'config_template' ) . '/js/jquery.elevateZoom-3.0.3.min.js"></script>';
 } ?>
 
