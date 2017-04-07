@@ -1,0 +1,70 @@
+﻿<modification>
+	<name>Opencart Ratings of store</name>
+	<code>Opencart Ratings of store</code>
+	<version>1.10</version>
+	<author>d.beerluskony@gmail.com</author>
+	<file path="admin/view/template/common/menu.tpl">
+		<operation>
+			<search><![CDATA[<li><a href="<?php echo $review; ?>"><?php echo $text_review; ?></a></li>]]></search>
+			<add position="before"><![CDATA[
+				<li><a href="<?php echo $shop_rating; ?>"><?php echo $text_shop_rating; ?></a></li>
+			]]>
+			</add>
+		</operation>
+	</file>
+	<file path="admin/controller/common/menu.php">
+		<operation>
+			<search><![CDATA[$data['text_review']]]></search>
+			<add position="after"><![CDATA[
+				$this->load->language('catalog/shop_rating');
+				$data['text_shop_rating'] = $this->language->get('text_shop_rating');
+			]]>
+			</add>
+		</operation>
+		<operation>
+			<search><![CDATA[$data['review']]]></search>
+			<add position="after"><![CDATA[
+				$data['shop_rating'] = $this->url->link('catalog/shop_rating', 'token=' . $this->session->data['token'], 'SSL');
+			]]>
+			</add>
+		</operation>
+	</file>
+	<file path="catalog/controller/feed/google_sitemap.php">
+		<operation>
+			<search><![CDATA[$output .= '</urlset>';]]></search>
+			<add position="before"><![CDATA[
+
+				/*------ShopRating------*/
+
+				$output .= '<url>';
+				$output .= '<loc>' . $this->url->link('information/shop_rating') . '</loc>';
+				$output .= '<changefreq>weekly</changefreq>';
+				$output .= '<priority>0.5</priority>';
+				$output .= '</url>';
+
+				/*----END ShopRating----*/
+
+			]]>
+			</add>
+		</operation>
+	</file>
+	<file path="catalog/controller/information/sitemap.php">
+		<operation>
+			<search><![CDATA[$data['informations'] = array();]]></search>
+			<add position="after"><![CDATA[
+
+				/*------ShopRating------*/
+
+				$this->load->language('information/shop_rating');
+				$data['informations'][] = array(
+					'title' => $this->language->get('sr_title'),
+					'href'  => $this->url->link('information/shop_rating')
+				);
+
+				/*----END ShopRating----*/
+
+			]]>
+			</add>
+		</operation>
+	</file>
+</modification>

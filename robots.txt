@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /*search
+Disallow: /*sort
+Disallow: /*compare
+Disallow: /*limit
+Sitemap: http://skuter77.ru/index.php?route=feed/google_sitemap
+Host: skuter77.ru

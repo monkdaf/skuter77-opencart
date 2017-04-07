@@ -1,0 +1,12 @@
+ .megamenu-background > div { padding-top: 1px;padding-bottom: 1px; }
+.header-type-2 #top .search_form { max-width: 242px; }
+.top-bar > .container { position: relative;margin-top: -1px !important; }
+#top .pattern > .container { padding-top: 11px;padding-bottom: 35px; }
+ul.megamenu > li { margin-right: 30px; }
+ul.megamenu .megamenu-label { left: -8px;top: -8px; }
+
+.propis {color: #7f7f7f;    padding-top: 11px;    text-align: left;}
+.tbold {font-weight: bold; color: #000;}
+.wsbanner {display:inline-block; color: #7f7f7f; padding-top: 11px;  text-align: left; margin-left: 10px;}
+.wsimage {display:inline-block; position:relative; top: 10px; margin-left: 5px; margin-right: 5px;}
+.wsbold {font-weight: bold;}
