@@ -83,15 +83,9 @@ $config = $this->registry->get('config');
 					<?php if ($product['attribute_groups']) { ?>
 					  <?php foreach ($product['attribute_groups'] as $attribute_group) { ?>
 					    <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
-					      <?php if(in_array($attribute['attribute_id'], array(4,12,15))) { ?>
+					      <?php if(in_array($attribute['attribute_id'], array(12,15,17))) { ?>
 					        <?php
 					          switch ($attribute['attribute_id']):
-					              case 4:
-									?>
-									          <td><img src="/image/t3.jpg"></td>
-														<td><?php echo $attribute['text']; ?></td>
-									<?php
-					                  break;
 					              case 12:
 									?>
 														<td><img src="/image/t1.jpg"></td>
@@ -101,6 +95,12 @@ $config = $this->registry->get('config');
 					              case 15:
 									?>
 														<td><img src="/image/t2.jpg"></td>
+														<td><?php echo $attribute['text']; ?></td>
+									<?php
+					                  break;
+					              case 17:
+									?>
+									          <td><img src="/image/t3.jpg"></td>
 														<td><?php echo $attribute['text']; ?></td>
 									<?php
 					                  break;
