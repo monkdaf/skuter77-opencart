@@ -61,6 +61,7 @@ $config = $this->registry->get('config');
 		<?php } ?>
 	</div>
 	<div class="right">
+<!--	<div>AAA<?php echo $product['attribute_groups']; ?>AAA</div> -->
 		<noindex><div class="name" style="min-height: 79px;"><a rel="nofollow" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
 		<?php if($theme_options->get( 'product_grid_type' ) == '7') { ?>
 		<?php $product_detail = $theme_options->getDataProduct( $product['product_id'] ); ?>
