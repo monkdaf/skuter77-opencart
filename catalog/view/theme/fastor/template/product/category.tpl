@@ -147,8 +147,10 @@ $part = explode("|||", $desc);
   				     		<script>
   				     		$(function () {
   				     			var austDay = new Date();
-  				     			austDay = new Date(<?php echo date("Y", strtotime($date_end)); ?>, <?php echo date("m", strtotime($date_end)); ?> - 1, <?php echo date("d", strtotime($date_end)); ?>);
-  				     			$('#countdown<?php echo $countdown; ?>').countdown({until: austDay});
+										//  			austDay = new Date(<?php echo date("Y", strtotime($date_end)); ?>, <?php echo date("m", strtotime($date_end)); ?> - 1, <?php echo date("d", strtotime($date_end)); ?>);
+										//  			$('#countdown<?php echo $countdown; ?>').countdown({until: austDay});
+										var endOfSalesDay = new Date(austDay.getFullYear(), austDay.getMonth(), austDay.getDate() + 4);
+										$('#countdown<?php echo $countdown; ?>').countdown({until: endOfSalesDay});
   				     		});
   				     		</script>
   				     		<div id="countdown<?php echo $countdown; ?>" class="clearfix"></div>

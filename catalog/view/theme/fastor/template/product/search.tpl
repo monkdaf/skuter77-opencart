@@ -1,12 +1,12 @@
-<?php echo $header; 
+<?php echo $header;
 if(isset($mfilter_json)) {
-	if(!empty($mfilter_json)) { 
-		echo '<div id="mfilter-json" style="display:none">' . base64_encode( $mfilter_json ) . '</div>'; 
-	} 
+	if(!empty($mfilter_json)) {
+		echo '<div id="mfilter-json" style="display:none">' . base64_encode( $mfilter_json ) . '</div>';
+	}
 }
 
 $theme_options = $this->registry->get('theme_options');
-$config = $this->registry->get('config'); 
+$config = $this->registry->get('config');
 $background_status = false;
 include('catalog/view/theme/'.$config->get('config_template').'/template/new_elements/wrapper_top.tpl'); ?>
 
@@ -63,19 +63,19 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 	</p>
 	<input type="button" value="<?php echo $button_search; ?>" id="button-search" class="btn btn-primary" style="margin-top: 10px" />
 	<h2 style="padding-top: 40px"><?php echo $text_search; ?></h2>
-  
+
   <?php if ($products) { ?>
   <!-- Filter -->
   <div class="product-filter clearfix">
   	<div class="options">
   		<div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>
-  		
+
   		<div class="button-group display" data-toggle="buttons-radio">
   			<button id="grid" <?php if($theme_options->get('default_list_grid') == '1') { echo 'class="active"'; } ?> rel="tooltip" title="Grid" onclick="display('grid');"><i class="fa fa-th-large"></i></button>
   			<button id="list" <?php if($theme_options->get('default_list_grid') != '1') { echo 'class="active"'; } ?> rel="tooltip" title="List" onclick="display('list');"><i class="fa fa-th-list"></i></button>
   		</div>
   	</div>
-  	
+
   	<div class="list-options">
   		<div class="sort">
   			<select onchange="location = this.value;">
@@ -88,7 +88,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
   			  <?php } ?>
   			</select>
   		</div>
-  		
+
   		<div class="limit">
   			<select onchange="location = this.value;">
   			  <?php foreach ($limits as $limits) { ?>
@@ -102,7 +102,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
   		</div>
   	</div>
   </div>
-  
+
   <!-- Products list -->
   <div class="product-list"<?php if(!($theme_options->get('default_list_grid') == '1')) { echo ' class="active"'; } ?>>
   	<?php foreach ($products as $product) { ?>
@@ -126,7 +126,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
   				<?php } elseif($theme_options->get( 'display_text_new' ) != '0' && $theme_options->isLatestProduct( $product['product_id'] )) { ?>
   					 <div class="new"><?php if($theme_options->get( 'new_text', $config->get( 'config_language_id' ) ) != '') { echo $theme_options->get( 'new_text', $config->get( 'config_language_id' ) ); } else { echo 'New'; } ?></div>
   				<?php } ?>
-  				
+
   				<?php if($product['thumb']) { ?>
   					<?php if($theme_options->get( 'lazy_loading_images' ) != '0') { ?>
   					<a href="<?php echo $product['href']; ?>"><img src="image/catalog/blank.gif" data-echo="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a>
@@ -136,23 +136,25 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
   				<?php } else { ?>
   				<a href="<?php echo $product['href']; ?>"><img src="image/no_image.jpg" alt="<?php echo $product['name']; ?>" /></a>
   				<?php } ?>
-  				
-  				<?php if($theme_options->get( 'display_specials_countdown' ) == '1' && $product['special']) { $countdown = rand(0, 5000)*rand(0, 5000); 
+
+  				<?php if($theme_options->get( 'display_specials_countdown' ) == '1' && $product['special']) { $countdown = rand(0, 5000)*rand(0, 5000);
   				          $product_detail = $theme_options->getDataProduct( $product['product_id'] );
   				          $date_end = $product_detail['date_end'];
   				          if($date_end != '0000-00-00' && $date_end) { ?>
   				     		<script>
   				     		$(function () {
   				     			var austDay = new Date();
-  				     			austDay = new Date(<?php echo date("Y", strtotime($date_end)); ?>, <?php echo date("m", strtotime($date_end)); ?> - 1, <?php echo date("d", strtotime($date_end)); ?>);
-  				     			$('#countdown<?php echo $countdown; ?>').countdown({until: austDay});
+										//  			austDay = new Date(<?php echo date("Y", strtotime($date_end)); ?>, <?php echo date("m", strtotime($date_end)); ?> - 1, <?php echo date("d", strtotime($date_end)); ?>);
+										//  			$('#countdown<?php echo $countdown; ?>').countdown({until: austDay});
+										var endOfSalesDay = new Date(austDay.getFullYear(), austDay.getMonth(), austDay.getDate() + 4);
+										$('#countdown<?php echo $countdown; ?>').countdown({until: endOfSalesDay});
   				     		});
   				     		</script>
   				     		<div id="countdown<?php echo $countdown; ?>" class="clearfix"></div>
   					     <?php } ?>
   				<?php } ?>
   			</div>
-  			
+
   			<div class="name-actions col-sm-4">
   			     <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
   			       <?php if($theme_options->get( 'product_list_type' ) == '4') { ?>
@@ -166,7 +168,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
   					<span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
   					<?php } ?>
   				</div>
-  				
+
   				<ul>
   				     <?php if($theme_options->get( 'display_add_to_cart' ) != '0') { ?>
   				          <?php $enquiry = false; if($config->get( 'product_blocks_module' ) != '') { $enquiry = $theme_options->productIsEnquiry($product['product_id']); }
@@ -176,21 +178,21 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
   				          <li><a onclick="cart.add('<?php echo $product['product_id']; ?>');" data-toggle="tooltip" data-original-title="<?php echo $button_cart; ?>"><i class="fa fa-shopping-cart"></i></a></li>
   				          <?php } ?>
   				     <?php } ?>
-  				     
+
   				     <?php if($theme_options->get( 'quick_view' ) == 1) { ?>
   				     <li class="quickview"><a href="index.php?route=product/quickview&amp;product_id=<?php echo $product['product_id']; ?>" data-toggle="tooltip" data-original-title="<?php if($theme_options->get( 'quickview_text', $config->get( 'config_language_id' ) ) != '') { echo html_entity_decode($theme_options->get( 'quickview_text', $config->get( 'config_language_id' ) )); } else { echo 'Quickview'; } ?>"><i class="fa fa-search"></i></a></li>
   				     <?php } ?>
-  				
+
   					<?php if($theme_options->get( 'display_add_to_compare' ) != '0') { ?>
   					<li><a onclick="compare.add('<?php echo $product['product_id']; ?>');" data-toggle="tooltip" data-original-title="<?php if($theme_options->get( 'add_to_compare_text', $config->get( 'config_language_id' ) ) != '') { echo $theme_options->get( 'add_to_compare_text', $config->get( 'config_language_id' ) ); } else { echo 'Add to compare'; } ?>"><i class="fa fa-exchange"></i></a></li>
   					<?php } ?>
-  					
+
   					<?php if($theme_options->get( 'display_add_to_wishlist' ) != '0') { ?>
   					<li><a onclick="wishlist.add('<?php echo $product['product_id']; ?>');" data-toggle="tooltip" data-original-title="<?php if($theme_options->get( 'add_to_wishlist_text', $config->get( 'config_language_id' ) ) != '') { echo $theme_options->get( 'add_to_wishlist_text', $config->get( 'config_language_id' ) ); } else { echo 'Add to wishlist'; } ?>"><i class="fa fa-heart"></i></a></li>
   					<?php } ?>
   				</ul>
   			</div>
-  			
+
   			<div class="desc col-sm-5">
   				<div class="description"><?php echo $product['description']; ?></div>
   			</div>
@@ -198,17 +200,17 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
   	</div>
   	<?php } ?>
   </div>
-  
+
   <!-- Products grid -->
-  <?php 
-  $class = 3; 
-  $row = 4; 
-  
+  <?php
+  $class = 3;
+  $row = 4;
+
   if($theme_options->get( 'product_per_pow' ) == 6) { $class = 2; }
   if($theme_options->get( 'product_per_pow' ) == 5) { $class = 25; }
   if($theme_options->get( 'product_per_pow' ) == 3) { $class = 4; }
-  
-  if($theme_options->get( 'product_per_pow' ) > 1) { $row = $theme_options->get( 'product_per_pow' ); } 
+
+  if($theme_options->get( 'product_per_pow' ) > 1) { $row = $theme_options->get( 'product_per_pow' ); }
   ?>
   <div class="product-grid"<?php if($theme_options->get('default_list_grid') == '1') { echo ' class="active"'; } ?>>
   	<div class="row">
@@ -248,27 +250,27 @@ $('select[name=\'category_id\']').trigger('change');
 
 $('#button-search').bind('click', function() {
 	url = 'index.php?route=product/search';
-	
+
 	var search = $('#content-search input[name=\'search\']').attr('value');
-	
+
 	if (search) {
 		url += '&search=' + encodeURIComponent(search);
 	}
 
 	var category_id = $('#content select[name=\'category_id\']').attr('value');
-	
+
 	if (category_id > 0) {
 		url += '&category_id=' + encodeURIComponent(category_id);
 	}
-	
+
 	var sub_category = $('#content input[name=\'sub_category\']:checked').attr('value');
-	
+
 	if (sub_category) {
 		url += '&sub_category=true';
 	}
-		
+
 	var filter_description = $('#content input[name=\'description\']:checked').attr('value');
-	
+
 	if (filter_description) {
 		url += '&description=true';
 	}
@@ -283,15 +285,15 @@ function display(view) {
 		$('.product-list').addClass("active");
 
 		$('.display').html('<button id="grid" rel="tooltip" title="Grid" onclick="display(\'grid\');"><i class="fa fa-th-large"></i></button> <button class="active" id="list" rel="tooltip" title="List" onclick="display(\'list\');"><i class="fa fa-th-list"></i></button>');
-		
+
 		localStorage.setItem('display', 'list');
 	} else {
-	
+
 		$('.product-grid').addClass("active");
 		$('.product-list').removeClass("active");
-					
+
 		$('.display').html('<button class="active" id="grid" rel="tooltip" title="Grid" onclick="display(\'grid\');"><i class="fa fa-th-large"></i></button> <button id="list" rel="tooltip" title="List" onclick="display(\'list\');"><i class="fa fa-th-list"></i></button>');
-		
+
 		localStorage.setItem('display', 'grid');
 	}
 }
@@ -301,6 +303,6 @@ if (localStorage.getItem('display') == 'list') {
 } else {
 	display('grid');
 }
-//--></script> 
+//--></script>
 <?php include('catalog/view/theme/'.$config->get('config_template').'/template/new_elements/wrapper_bottom.tpl'); ?>
 <?php echo $footer; ?>

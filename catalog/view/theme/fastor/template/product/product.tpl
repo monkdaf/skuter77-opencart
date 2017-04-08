@@ -187,11 +187,13 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			             		<script>
 			             		$(function () {
 			             			var austDay = new Date();
-			             			austDay = new Date(<?php echo date("Y", strtotime($date_end)); ?>, <?php echo date("m", strtotime($date_end)); ?> - 1, <?php echo date("d", strtotime($date_end)); ?>);
-			             			$('#countdown<?php echo $countdown; ?>').countdown({until: austDay});
+                        // ay = new Date(<?php echo date("Y", strtotime($date_end)); ?>, <?php echo date("m", strtotime($date_end)); ?> - 1, <?php echo date("d", strtotime($date_end)); ?>);
+                        // ountdown<?php echo $countdown; ?>').countdown({until: austDay});
+                        var endOfSalesDay = new Date(austDay.getFullYear(), austDay.getMonth(), austDay.getDate() + 4);
+                        $('#countdown<?php echo $countdown; ?>').countdown({until: endOfSalesDay});
 			             		});
 			             		</script>
-			             		<h3><?php if($theme_options->get( 'limited_time_offer_text', $config->get( 'config_language_id' ) ) != '') { echo $theme_options->get( 'limited_time_offer_text', $config->get( 'config_language_id' ) ); } else { echo 'Limited time offer'; } ?></h3>
+			             		<h3><?php if($theme_options->get( 'limited_time_offer_text', $config->get( 'config_language_id' ) ) != '') { echo $theme_options->get( 'limited_time_offer_text', $config->get( 'config_language_id' ) ); } else { echo 'До конца акции осталось'; } ?></h3>
 			             		<div id="countdown<?php echo $countdown; ?>" class="clearfix"></div>
 			        	     <?php } ?>
 			        <?php } ?>
