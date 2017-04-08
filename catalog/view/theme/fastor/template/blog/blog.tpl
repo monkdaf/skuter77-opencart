@@ -1,16 +1,16 @@
-<?php echo $header; 
+<?php echo $header;
 $theme_options = $this->registry->get('theme_options');
-$config = $this->registry->get('config'); 
+$config = $this->registry->get('config');
 include('catalog/view/theme/' . $config->get('config_template') . '/template/new_elements/wrapper_top.tpl'); ?>
 
 
 <?php if(!empty($articles)):?>
 <div class="posts <?php if($template == 'grid_3_columns.tpl'):?>posts-3-columns-grid<?php endif; ?> <?php if($template == 'grid.tpl' || $template == 'grid_3_columns.tpl'):?> posts-grid <?php endif; ?>">
-    
+
     <?php
-    include('catalog/view/theme/' . $config->get('config_template') . '/template/blog/article_list/'. $settings['article_list_template']); 
+    include('catalog/view/theme/' . $config->get('config_template') . '/template/blog/article_list/'. $settings['article_list_template']);
     ?>
-    
+
 </div>
 <?php if($settings['pagination_type'] == 'STANDARD'): ?>
 <div class="pagination-results">
@@ -24,9 +24,9 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
 <?php endif; ?>
 <?php endif; ?>
 <?php endif; ?>
-    
+
 <script>
-    
+
     function initSlider()
     {
         $('.posts .media-slider').each(function(){
@@ -44,7 +44,7 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
             }
         })
     }
-    
+
     function isMore(page)
     {
         $.ajax({
@@ -62,28 +62,28 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
             }
         });
     }
-    
+
     var $grid = {};
-    
+
     function initMasonry(){
          $grid = $('.posts').masonry({
             itemSelector: '.post',
-            
+
           })
         $grid.imagesLoaded().progress( function() {
             $grid.masonry('layout');
             initSlider();
         });
     }
-    
+
     $(function(){
         initSlider();
-        
+
         <?php if($template == 'grid.tpl' || $template == 'grid_3_columns.tpl'):?>
         initMasonry();
         <?php endif; ?>
-                
-        
+
+
         $('#load-more').click(function(){
             var page = $(this).attr('data-page');
             $.ajax({
@@ -102,7 +102,7 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
                         $('.pagination-ajax').fadeOut();
                         return;
                     }
-                    
+
                     <?php if($template == 'grid.tpl' || $template == 'grid_3_columns.tpl'):?>
                         // prepend items to grid
                         //$grid.imagesLoaded().progress( function() {
@@ -113,13 +113,13 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
                        // });
                    <?php else: ?>
                         $('.posts').append('<div class="ajax-content" style="display: none">' + data + '</div>');
-                    
+
                         $('.posts .ajax-content').last().fadeIn('slow', function(){
                             initSlider();
                         });
                    <?php endif; ?>
-                    
-                    
+
+
                     $('#load-more').attr('data-page', parseInt(++page));
                     isMore(page);
                 }
