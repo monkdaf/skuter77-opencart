@@ -198,9 +198,9 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			        	     <?php } ?>
 			        <?php } ?>
 			        <?php if (!$special) { ?>
-			        <span class="price-new"><span itemprop="price" id="price-old"><?php echo $price; ?> <i class="fa fa-rub"></i></span></span>
+			        <span class="price-new"><span itemprop="price" id="price-old"><?php echo $price; ?> <!-- <i class="fa fa-rub"></i> --></span></span>
 			        <?php } else { ?>
-			        <span class="price-new"><span itemprop="price" id="price-special"><?php echo $special; ?> <i class="fa fa-rub"></i></span></span> <span class="price-old" id="price-old"><?php echo $price; ?> <i class="fa fa-rub"></i></span>
+			        <span class="price-new"><span itemprop="price" id="price-special"><?php echo $special; ?> <!-- <i class="fa fa-rub"></i> --></span></span> <span class="price-old" id="price-old"><?php echo $price; ?> <!-- <i class="fa fa-rub"></i> --></span>
 			        <?php } ?>
 			        <br />
 			        <?php if ($tax) { ?>

@@ -166,9 +166,9 @@ $part = explode("|||", $desc);
   			     <?php } ?>
   				<div class="price">
   					<?php if (!$product['special']) { ?>
-  					<?php echo $product['price']; ?> <i class="fa fa-rub"></i>
+  					<?php echo $product['price']; ?> <!-- <i class="fa fa-rub"></i> -->
   					<?php } else { ?>
-  					<span class="price-old"><?php echo $product['price']; ?> <i class="fa fa-rub"></i></span> <span class="price-new"><?php echo $product['special']; ?> <i class="fa fa-rub"></i></span>
+  					<span class="price-old"><?php echo $product['price']; ?> <!-- <i class="fa fa-rub"></i> --></span>
   					<?php } ?>
   				</div>
 
