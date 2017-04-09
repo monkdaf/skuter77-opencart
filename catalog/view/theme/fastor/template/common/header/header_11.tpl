@@ -37,13 +37,13 @@
 								<!-- Work shop banner -->
 								<div>
 									<div class="wsbanner"><span>ДОСТАВКА ПО МОСКВЕ</span><br/>сегодня <span class="wsbold">с 10 до 22</span></div>
-									<div class="wsimage"><img src="/image/h2.jpg"/></div>
+									<div class="wsimage"><img src="/image/h2.jpg" alt="ДОСТАВКА"/></div>
 
 									<div class="wsbanner"><span>БЕЗ ВЫХОДНЫХ</span><br/>с <span class="wsbold">9:00</span> до <span class="wsbold">22:00</span></div>
-									<div class="wsimage"><img src="/image/h3.jpg"/></div>
+									<div class="wsimage"><img src="/image/h3.jpg" alt="РЕЖИМ"/></div>
 
 									<div class="wsbanner"><span class="wsbold">ГАРАНТИЯ</span><br/>на все товары</div>
-									<div class="wsimage"><img src="/image/guard.jpg"/></div>
+									<div class="wsimage"><img src="/image/guard.jpg" alt="ГАРАНТИЯ"/></div>
 								</div>
 								<!-- Here was Search -->
 
@@ -62,7 +62,7 @@
 									 <!-- Search -->
 									 <div class="search_form" style="display:inline-block;max-width:120px;margin-top:10px;">
 									  <div class="button-search"></div>
-									  <input type="text" class="input-block-level search-query" style="height:57px;"name="search" placeholder="<?php echo str_replace('...', '', $search); ?>" id="search_query" value="" />
+									  <input type="text" class="input-block-level search-query" style="height:57px;" name="search" placeholder="<?php echo str_replace('...', '', $search); ?>" id="search_query" value="" />
 
 									  <?php if($theme_options->get( 'quick_search_autosuggest' ) != '0') { ?>
 									 	 <div id="autocomplete-results" class="autocomplete-results"></div>

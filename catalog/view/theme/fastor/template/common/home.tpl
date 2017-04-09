@@ -139,17 +139,17 @@ $modules = new Modules($this->registry); ?>
 					<div class="strip-line"></div>
 					<div class="clear"></div>
 					<div class="box-content products">
-						<div class="col-sm-1"><img src="/image/kk1.jpg"/></div>
+						<div class="col-sm-1"><img src="/image/kk1.jpg" alt="Закажите товар на сайте или получите консультацию по телефону"/></div>
 						<div class="col-sm-2 propis"><span class="tbold">Закажите товар</span> на сайте или получите консультацию по телефону</div>
 
-						<div class="col-sm-1"><img src="/image/kk2.jpg"/></div>
+						<div class="col-sm-1"><img src="/image/kk2.jpg" alt="Далее"/></div>
 
-						<div class="col-sm-1"><img src="/image/kk3.jpg"/></div>
+						<div class="col-sm-1"><img src="/image/kk3.jpg" alt="Доставим"/></div>
 						<div class="col-sm-3 propis">Мы обработаем заказ за <span class="tbold">9&nbsp;минут</span> и доставим гироскутер уже сегодня</div>
 
-						<div class="col-sm-1"><img src="/image/kk2.jpg"/></div>
+						<div class="col-sm-1"><img src="/image/kk2.jpg" alt="Далее"/></div>
 
-						<div class="col-sm-1"><img src="/image/kk4.jpg"/></div>
+						<div class="col-sm-1"><img src="/image/kk4.jpg" alt="Вы уже катаетесь"/></div>
 						<div class="col-sm-2 propis"><span class="tbold">Вы уже катаетесь</span> на своём новеньком гироскутере</div>
 					</div>
 				</div>
