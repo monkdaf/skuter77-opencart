@@ -29,11 +29,9 @@
 							<div class="col-sm-3" id="header-left">
 							     <?php if ($logo) { ?>
 							     <!-- Logo -->
-									 <a href="<?php echo $home; ?>">
-									 	<div class="logo" style="padding-top: 12px;><a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></div>
+									 	<div class="logo" style="padding-top: 12px;"><a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></div>
 							     	<?php } ?>
 										</div>
-									</a>
 							<!-- Header Center -->
 							<div class="col-sm-6" id="header-center">
 								<!-- Work shop banner -->
