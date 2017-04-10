@@ -102,7 +102,7 @@ $id = rand(0, 5000)*rand(5000, 50000); ?>
 							if($row['submenu_type'] == 2) { $title = 'title="hover-intent"'; }
 							if($row['new_window'] == 1) { $target = 'target="_blank"'; }
 							if(!isset($row['name'][$lang_id])) { $row['name'][$lang_id] = 'Set name'; }
-							if($row['custom_class'] != '') { $class .= ' ' . $row['custom_class']; }
+							// if($row['custom_class'] != '') { $class .= ' ' . $row['custom_class']; }
 							$label = false;
 							if($row['label'] != '') $label = '<span class="megamenu-label" style="background: ' . $row['label_background_color'] . ';color:  ' . $row['label_text_color'] . ';"><span style="background: ' . $row['label_background_color'] . ';border-color: ' . $row['label_background_color'] . '"></span>' . $row['label'] . '</span>';
 							echo "<li class='".$class."' ".$title."><p class='close-menu'></p><p class='open-menu'></p>";

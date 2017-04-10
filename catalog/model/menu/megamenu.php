@@ -1,11 +1,11 @@
 <?php
-/* 
+/*
 Version: 1.0
 Author: Artur Sułkowski
 Website: http://artursulkowski.pl
 */
 
-class ModelMenuMegamenu extends Model {		
+class ModelMenuMegamenu extends Model {
 	public function getMenu($module_id = 0) {
 		$output = array();
 		$lang_id = $this->config->get('config_language_id');
@@ -28,13 +28,13 @@ class ModelMenuMegamenu extends Model {
 					$description = '<br><span class="description">'.$description_array[$lang_id].'</span></div>';
 				}
 			}
-			
+
 			$label = false;
 			$label_array = unserialize($row['label']);
 			if(isset($label_array[$lang_id])) {
 				if(!empty($label_array[$lang_id])) $label = $label_array[$lang_id];
 			}
-			
+
 			$output[] = array(
 				'icon' => $icon,
 				'name' => unserialize($row['name']),
@@ -43,7 +43,7 @@ class ModelMenuMegamenu extends Model {
 				'label' => $label,
 				'label_text_color' => $row['label_text_color'],
 				'label_background_color' => $row['label_background_color'],
-				'custom_class' => $row['custom_class'],
+				// 'custom_class' => $row['custom_class'],
 				'new_window' => $row['new_window'],
 				'display_on_mobile' => $row['display_on_mobile'],
 				'position' => $row['position'],
@@ -62,15 +62,15 @@ class ModelMenuMegamenu extends Model {
 		global $loader, $registry;
 		$output = array();
 		$lang_id = $this->config->get('config_language_id');
-		
+
 		// Product model
 		$loader->model('catalog/product');
 		$model = $registry->get('model_catalog_product');
-		
+
 		// Tool model
 		$loader->model('tool/image');
 		$model_image = $registry->get('model_tool_image');
-				
+
 		$query = $this->db->query("SELECT * FROM ".DB_PREFIX."mega_menu WHERE parent_id='".$id."' AND status='0' AND module_id='" . $module_id . "' ORDER BY rang");
 		foreach ($query->rows as $row) {
 			$content = unserialize($row['content']);
@@ -79,7 +79,7 @@ class ModelMenuMegamenu extends Model {
 			} else {
 				$html = false;
 			}
-			
+
 			if(isset($content['categories'])) {
 				if(is_array($content['categories'])) {
 					$categories = $this->getCategories($content['categories']);
@@ -89,18 +89,18 @@ class ModelMenuMegamenu extends Model {
 			} else {
 				$categories = false;
 			}
-			
+
 			if(isset($content['product']['id'])) {
 				$product = $model->getProduct($content['product']['id']);
 				if(is_array($product)) {
 					$product_link = $this->url->link('product/product', 'product_id=' . $content['product']['id']);
-					
+
 					if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
 						$price = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')));
 					} else {
 						$price = false;
 					}
-					
+
 					if ((float)$product['special']) {
 						$special = $this->currency->format($this->tax->calculate($product['special'], $product['tax_class_id'], $this->config->get('config_tax')));
 					} else {
@@ -112,7 +112,7 @@ class ModelMenuMegamenu extends Model {
 					$price = false;
 					$special = false;
 				}
-			} else {	
+			} else {
 				$product['name'] = false;
 				$product_link = false;
 				$price = false;
@@ -125,10 +125,10 @@ class ModelMenuMegamenu extends Model {
 				if($content['product']['width'] < 1) $content['product']['width'] = 400;
 				if($content['product']['height'] < 1) $content['product']['height'] = 400;
 				$product_image = $model_image->resize($product['image'], $content['product']['width'], $content['product']['height']);
-			} else {	
+			} else {
 				$product_image = false;
 			}
-			
+
 			$products = array();
 			$column = 1;
 			$heading = array();
@@ -141,7 +141,7 @@ class ModelMenuMegamenu extends Model {
 			          $heading = $content['products']['heading'];
 			     }
 			}
-			
+
 			$output[] = array(
 				'content_width' => intval($row['content_width']),
 				'content_type' => $row['content_type'],
@@ -163,20 +163,20 @@ class ModelMenuMegamenu extends Model {
 		}
 		return $output;
 	}
-	
+
 	public function getProducts($products = array(), $image_width, $image_height) {
 	     global $loader, $registry;
 	     $output = array();
 	     $lang_id = $this->config->get('config_language_id');
-	     
+
 	     // Product model
 	     $loader->model('catalog/product');
 	     $model = $registry->get('model_catalog_product');
-	     
+
 	     // Tool model
 	     $loader->model('tool/image');
 	     $model_image = $registry->get('model_tool_image');
-	     
+
 	     foreach($products as $product) {
 	          $product = $model->getProduct($product['id']);
 	          if(is_array($product)) {
@@ -185,31 +185,31 @@ class ModelMenuMegamenu extends Model {
      	          } else {
      	               $product_link = false;
      	          }
-     	          
+
      	          if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
      	          	$price = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')));
      	          } else {
      	          	$price = false;
      	          }
-     	          
+
      	          if ((float)$product['special']) {
      	          	$special = $this->currency->format($this->tax->calculate($product['special'], $product['tax_class_id'], $this->config->get('config_tax')));
      	          } else {
      	          	$special = false;
      	          }
-     	          
+
      	          if(isset($product['image'])) {
      	          	$product_image = $model_image->resize($product['image'], $image_width, $image_height);
-     	          } else {	
+     	          } else {
      	          	$product_image = false;
      	          }
-     	          
+
      	          if(isset($product['name'])) {
      	               $product_name = $product['name'];
      	          } else {
      	               $product_name = false;
      	          }
-     	          
+
      	          $output[] = array(
      	               'id' => $product['product_id'],
      	               'name' => $product_name,
@@ -220,20 +220,20 @@ class ModelMenuMegamenu extends Model {
      	          );
 	          }
 	     }
-	     
+
 	     return $output;
 	}
-	
+
 	public function getCategories($array = array()) {
 		global $loader, $registry;
-		
+
 		$output = false;
 		$lang_id = $this->config->get('config_language_id');
-		
+
 		// Category model
 		$loader->model('catalog/category');
 		$model = $registry->get('model_catalog_category');
-		
+
 		$output .= '<div class="row">';
 			$row_fluid = 12;
 			if($array['columns'] == 2) { $row_fluid = 6; }
@@ -244,21 +244,21 @@ class ModelMenuMegamenu extends Model {
 			if(!($array['columns'] > 0 && $array['columns'] < 7)) { $array['columns'] = 1; }
 			$menu_class = 'hover-menu';
 			if($array['submenu'] == 2) { $menu_class = 'static-menu'; }
-			
+
 			for ($i = 0; $i < count($array['categories']);) {
 				$output .= '<div class="col-sm-'.$row_fluid.' '.$menu_class.'">';
 					$output .= '<div class="menu">';
 						$output .= '<ul>';
 							$j = $i + ceil(count($array['categories']) / $array['columns']);
-							for (; $i < $j; $i++) { 
+							for (; $i < $j; $i++) {
 								if(isset($array['categories'][$i]['id'])) {
 									$info_category = $model->getCategory($array['categories'][$i]['id']);
-									if(isset($info_category['category_id']) || isset($array['categories'][$i]['type'])) {     
+									if(isset($info_category['category_id']) || isset($array['categories'][$i]['type'])) {
 									     $image_url = false;
-									     
+
 									     if(isset($info_category['category_id'])) {
      										$path = '';
-     										
+
      										if($info_category['parent_id'] > 0) {
      											$path = $info_category['parent_id'];
      											$info_category2 = $model->getCategory($info_category['parent_id']);
@@ -270,19 +270,19 @@ class ModelMenuMegamenu extends Model {
      												}
      											}
      										}
-     										
+
      										if($path != '') {
      											$path = $path . '_';
      										}
-     										
+
      										if($info_category['image'] != '') $image_url = $info_category['image'];
 										}
-										
+
 										if(is_array($info_category) || isset($array['categories'][$i]['type'])) {
 											$class_link = false;
 											if(isset($array['categories'][$i]['children'])) { if(!empty($array['categories'][$i]['children'])) { $class_link = 'with-submenu'; } }
 											if(isset($info_category['category_id'])) $link = $this->url->link('product/category', 'path=' . $path . $info_category['category_id']);
-											
+
 											if(isset($array['categories'][$i]['type'])) {
 											     if($array['categories'][$i]['type'] == 'link') {
 											          $info_link = $this->getLink($array['categories'][$i]['id']);
@@ -294,14 +294,14 @@ class ModelMenuMegamenu extends Model {
      											          	if(!empty($name_array[$lang_id])) {
      											          	     $info_category['name'] = htmlspecialchars_decode($name_array[$lang_id]);
      											          	     if($info_link['image'] != '') $image_url = $info_link['image'];
-     											          	     
+
      											          	     if($label_array[$lang_id] != '') { $info_category['name'] .= '<span class="megamenu-label" style="background: ' . $info_link['label_background'] . ';color: ' . $info_link['label_text'] . '"><span style="background: ' . $info_link['label_background'] . ';border-color: ' . $info_link['label_background'] . '"></span>' . $label_array[$lang_id] . '</span>'; }
      											          	}
      											          }
 											          }
 											     }
 											}
-											
+
 											if(isset($info_category['name'])) {
      											$output .= '<li>';
      											if(!isset($array['image_position'])) $array['image_position'] = false;
@@ -319,27 +319,27 @@ class ModelMenuMegamenu extends Model {
      													          if($array['image_width'] < 1) $array['image_width'] = 100;
      													          if($array['image_height'] < 1) $array['image_height'] = 100;
      													          $model_tool_image = $this->registry->get('model_tool_image');
-     													          $image = $model_tool_image->resize($image_url, $array['image_width'], $array['image_height']); 
+     													          $image = $model_tool_image->resize($image_url, $array['image_width'], $array['image_height']);
      													          $width = $array['image_width'];
      													          $height = $array['image_height'];
      													          $output .= '<div class="open-categories"></div><div class="close-categories"></div><div class="clearfix categories-image-right" data-image="' . $image . '"><div class="left-categories-image-right">';
      													     }
-     													     
+
      													     if($array['submenu'] == 2 && $array['image_position'] == 4 && $image_url) {
      													          if($array['image_width'] < 1) $array['image_width'] = 100;
      													          if($array['image_height'] < 1) $array['image_height'] = 100;
      													          $model_tool_image = $this->registry->get('model_tool_image');
-     													          $image = $model_tool_image->resize($image_url, $array['image_width'], $array['image_height']); 
+     													          $image = $model_tool_image->resize($image_url, $array['image_width'], $array['image_height']);
      													          $width = $array['image_width'];
      													          $height = $array['image_height'];
      													          $output .= '<div class="open-categories"></div><div class="close-categories"></div><div class="clearfix categories-image-right" data-image="' . $image . '"><div class="left-categories-image-left"><a href="'.$link.'"><img src="' . $image . '" class="image-right" alt="'.$info_category['name'].'"></a></div><div class="right-categories-image-left">';
      													     }
-     													     
+
      														$output .= $this->getCategoriesChildren($array['categories'][$i]['children'], $array['categories'][$i]['id'], $array['submenu_columns'], $array['submenu'], false, $width, $height);
      														if($array['submenu'] == 2 && $array['image_position'] == 3 && $image_url) {
      														     $output .= '</div><div class="right-categories-image-right"><a href="'.$link.'"><img src="' . $image . '" class="image-right" alt="'.$info_category['name'].'"></a></div></div>';
      														}
-     														
+
      														if($array['submenu'] == 2 && $array['image_position'] == 4 && $image_url) {
      														     $output .= '</div>';
      														}
@@ -358,17 +358,17 @@ class ModelMenuMegamenu extends Model {
 		$output .= '</div>';
 		return $output;
 	}
-	
+
 	public function getCategoriesChildren($array = array(), $path, $columns, $type, $submenu = false, $width = false, $height = false) {
 		global $loader, $registry;
-		
+
 		$output = false;
 		$lang_id = $this->config->get('config_language_id');
 
 		// Category model
 		$loader->model('catalog/category');
 		$model = $registry->get('model_catalog_category');
-				
+
 		if($type == 2) {
 			$row_fluid = 12;
 			if($columns == 2) { $row_fluid = 6; }
@@ -378,7 +378,7 @@ class ModelMenuMegamenu extends Model {
 			if($columns == 6) { $row_fluid = 2; }
 			if(!($columns > 0 && $columns < 7)) { $columns = 1; }
 			if($submenu == true) { $columns = 1; $row_fluid = 12; }
-			
+
 			if(!($width > 0 && $height > 0)) { $output .= '<div class="open-categories"></div><div class="close-categories"></div>'; }
 			if($columns != 1) {
 				$output .= '<div class="row visible">';
@@ -389,14 +389,14 @@ class ModelMenuMegamenu extends Model {
 					}
 						$output .= '<ul>';
 							$j = $i + ceil(count($array) / $columns);
-							for (; $i < $j; $i++) { 
+							for (; $i < $j; $i++) {
 								if(isset($array[$i]['id'])) {
 									$info_category = $model->getCategory($array[$i]['id']);
 									if(isset($info_category['category_id']) || isset($array[$i]['type'])) {
 									     $data_image = false;
 										if(isset($info_category['category_id'])) {
 											$path = '';
-											
+
 											if($info_category['parent_id'] > 0) {
 												$path = $info_category['parent_id'];
 												$info_category2 = $model->getCategory($info_category['parent_id']);
@@ -408,18 +408,18 @@ class ModelMenuMegamenu extends Model {
 													}
 												}
 											}
-											
+
 											if($path != '') {
 												$path = $path . '_';
 											}
-											
+
 											if($info_category['image'] != '' && $width > 0 && $height > 0) {
 											     $model_tool_image = $this->registry->get('model_tool_image');
-											     $image = $model_tool_image->resize($info_category['image'], $width, $height); 
+											     $image = $model_tool_image->resize($info_category['image'], $width, $height);
 											     $data_image = ' data-image="' . $image . '"';
 											}
 										}
-										
+
 										if(is_array($info_category) || isset($array[$i]['type'])) {
 											if(isset($info_category['category_id'])) $link = $this->url->link('product/category', 'path=' . $path . $info_category['category_id']);
 											if(isset($array[$i]['type'])) {
@@ -434,19 +434,19 @@ class ModelMenuMegamenu extends Model {
 												          	     $info_category['name'] = htmlspecialchars_decode($name_array[$lang_id]);
 												          	     if($info_link['image'] != '' && $width > 0 && $height > 0) {
 												          	          $model_tool_image = $this->registry->get('model_tool_image');
-												          	          $image = $model_tool_image->resize($info_link['image'], $width, $height); 
+												          	          $image = $model_tool_image->resize($info_link['image'], $width, $height);
 												          	          $data_image = ' data-image="' . $image . '"';
 												          	     }
-												          	     
+
      											          	     if($label_array[$lang_id] != '') { $info_category['name'] .= '<span class="megamenu-label" style="background: ' . $info_link['label_background'] . ';color: ' . $info_link['label_text'] . '"><span style="background: ' . $info_link['label_background'] . ';border-color: ' . $info_link['label_background'] . '"></span>' . $label_array[$lang_id] . '</span>'; }
 												          	}
 												          }
 											          }
 											     }
 											}
-											
+
 											if(!isset($info_category['name'])) $info_category['name'] = 'Set name';
-											
+
 											$output .= '<li><a href="'.$link.'" onclick="window.location = \''.$link.'\';"' . $data_image . '>'.$info_category['name'].'</a>';
 												if(isset($array[$i]['children'])) {
 													if(!empty($array[$i]['children'])) {
@@ -475,7 +475,7 @@ class ModelMenuMegamenu extends Model {
 					if(isset($info_category['category_id']) || isset($row['type'])) {
 						if(isset($info_category['category_id'])) {
 							$path = '';
-							
+
 							if($info_category['parent_id'] > 0) {
 								$path = $info_category['parent_id'];
 								$info_category2 = $model->getCategory($info_category['parent_id']);
@@ -487,17 +487,17 @@ class ModelMenuMegamenu extends Model {
 									}
 								}
 							}
-							
+
 							if($path != '') {
 								$path = $path . '_';
 							}
 						}
-						
+
 						$class_link = false;
-						if(isset($row['children'])) { 
+						if(isset($row['children'])) {
 							if(!empty($row['children'])) $class_link = 'with-submenu';
 						}
-						
+
 						if(is_array($info_category) || isset($row['type'])) {
 							if(isset($info_category['category_id'])) $link = $this->url->link('product/category', 'path=' . $path . $info_category['category_id']);
 							if(isset($row['type'])) {
@@ -510,16 +510,16 @@ class ModelMenuMegamenu extends Model {
 								          if(isset($name_array[$lang_id])) {
 								          	if(!empty($name_array[$lang_id])) {
 								          	     $info_category['name'] = htmlspecialchars_decode($name_array[$lang_id]);
-								          	     
+
 								          	     if($label_array[$lang_id] != '') { $info_category['name'] .= '<span class="megamenu-label" style="background: ' . $info_link['label_background'] . ';color: ' . $info_link['label_text'] . '"><span style="background: ' . $info_link['label_background'] . ';border-color: ' . $info_link['label_background'] . '"></span>' . $label_array[$lang_id] . '</span>'; }
 								          	}
 								          }
 							          }
 							     }
 							}
-							
+
 							if(!isset($info_category['name'])) $info_category['name'] = 'Set name';
-							
+
 							$output .= '<li><a href="'.$link.'" onclick="window.location = \''.$link.'\';" class="' . $class_link . '">'.$info_category['name'].'</a>';
 								if(isset($row['children'])) {
 									if(!empty($row['children'])) {
@@ -535,11 +535,11 @@ class ModelMenuMegamenu extends Model {
 		}
 		return $output;
 	}
-	
+
 	public function getLink($id) {
 		$sql = "SELECT * FROM " . DB_PREFIX . "mega_menu_links WHERE id = " . $id;
 		$query = $this->db->query($sql);
-	
+
 		return $query->row;
 	}
 }

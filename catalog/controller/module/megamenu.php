@@ -63,6 +63,9 @@ class ControllerModuleMegamenu extends Controller {
 		// cart
 		$data['cart'] = $this->load->controller('common/cart');
 
+		// account
+		$data['account'] = $this->url->link('account/account', '', 'SSL');
+
 		// Search
 		$this->language->load('common/header');
 		$data['text_search'] = $this->language->get('text_search');
