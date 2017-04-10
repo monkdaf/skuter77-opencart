@@ -1,5 +1,5 @@
-<?php  
-/* 
+<?php
+/*
 Version: 1.0
 Author: Artur Sułkowski
 Website: http://artursulkowski.pl
@@ -8,10 +8,10 @@ Website: http://artursulkowski.pl
 class ControllerModuleAdvancedGrid extends Controller {
 	public function index($setting) {
 	     $this->load->model('tool/image');
-	     
+
 		$this->load->language('module/bestseller');
 		$data['button_cart'] = $this->language->get('button_cart');
-	     
+
 		$data['position'] = $setting['position'];
 		$data['disable_on_mobile'] = $setting['disable_on_mobile'];
 		$data['custom_class'] = $setting['custom_class'];
@@ -35,7 +35,7 @@ class ControllerModuleAdvancedGrid extends Controller {
 		$data['columns'] = array();
 		foreach($setting['column'] as $column) {
 		     if($column['status'] == 1) {
-		          if(!isset($column['module'])) $column['module'] = array();	
+		          if(!isset($column['module'])) $column['module'] = array();
 		          $data['columns'][] = array(
 		               'width' => $column['width'],
 		               'disable_on_mobile' => $column['disable_on_mobile'],
@@ -48,21 +48,21 @@ class ControllerModuleAdvancedGrid extends Controller {
 		          );
 		     }
 		}
-				
+
 		usort($data['columns'], "cmp_by_optionNumber");
-		
+
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/advanced_grid/advanced_grid.tpl')) {
 			return $this->load->view($this->config->get('config_template') . '/template/module/advanced_grid/advanced_grid.tpl', $data);
 		} else {
 			return $this->load->view('default/template/module/advanced_grid/advanced_grid.tpl', $data);
 		}
 	}
-	
-	public function getModules($modules) {     
+
+	public function getModules($modules) {
 	     $output = array();
-	     
+
 	     if(!is_array($modules)) $modules = array();
-	     
+
 	     foreach($modules as $module) {
 	          if($module['status'] == 1) {
 	               $content = array();
@@ -71,16 +71,16 @@ class ControllerModuleAdvancedGrid extends Controller {
 	                    $content = array(
 	                         'module' => false
 	                    );
-	                    
+
 	                    $part = explode('.', $module['load_module']['module']);
-	                    
+
 	                    if (isset($part[0])) {
 	                    	$code = $part[0];
 	                    }
-	                    
-	                    if ($code) { 
+
+	                    if ($code) {
 	                    	$setting = $this->config->get($code . '_module');
-	                    	
+
 	                    	if (isset($part[1]) && isset($setting[$part[1]])) {
 	                    	     $content = array(
 	                    	          'module' => $this->load->controller('module/' . $code, $setting[$part[1]])
@@ -89,10 +89,10 @@ class ControllerModuleAdvancedGrid extends Controller {
 	                    		$content = array(
 	                    		     'module' => $this->load->controller('module/' . $module['load_module']['module'])
 	                    		);
-	                    	}			
+	                    	}
 	                    }
 	               }
-	               
+
 	               if($module['type'] == 'html') {
 	                    if(isset($module['html'][$this->config->get('config_language_id')])) {
 	                         $content = array(
@@ -104,7 +104,7 @@ class ControllerModuleAdvancedGrid extends Controller {
 	                         );
 	                    }
 	               }
-	               
+
 	               if($module['type'] == 'box') {
 	                    if(isset($module['module']['title'][$this->config->get('config_language_id')])) {
 	                         $content = array(
@@ -118,7 +118,7 @@ class ControllerModuleAdvancedGrid extends Controller {
 	                         );
 	                    }
 	               }
-	               
+
 	               if($module['type'] == 'latest_blogs') {
 	                    if(isset($module['latest_blogs']['title'][$this->config->get('config_language_id')])) {
 	                         $title = html_entity_decode($module['latest_blogs']['title'][$this->config->get('config_language_id')], ENT_QUOTES, 'UTF-8');
@@ -129,7 +129,7 @@ class ControllerModuleAdvancedGrid extends Controller {
                         $this->load->language('blog/blog');
 
                         $this->load->model('blog/article');
-	                   
+
                         $data['articles'] = array();
 
                         $results = $this->model_blog_article->getLatestArticles($module['latest_blogs']['limit']);
@@ -155,7 +155,7 @@ class ControllerModuleAdvancedGrid extends Controller {
                                 'href'        => $this->url->link('blog/article', (isset($this->request->get['path']) ? 'path=' . $this->request->get['path'] . '&' : '') .'article_id=' . $result['article_id'])
                             );
                         }
-	                    
+
 	                    $content = array(
 	                         'title' => $title,
 	                         'limit' => $module['latest_blogs']['limit'],
@@ -165,7 +165,7 @@ class ControllerModuleAdvancedGrid extends Controller {
 	                         'module_template' => $module['latest_blogs']['module_layout']
 	                    );
 	               }
-	               
+
 	               if($module['type'] == 'newsletter') {
 	                    if(!isset($module['newsletter']['module_layout'])) $module['newsletter']['module_layout'] = 'default.tpl';
 	                    if(isset($module['newsletter']['title'][$this->config->get('config_language_id')])) {
@@ -190,34 +190,34 @@ class ControllerModuleAdvancedGrid extends Controller {
 	                         );
 	                    }
 	               }
-	               
+
 	               if($module['type'] == 'links') {
 	                    if(isset($module['links']['title'][$this->config->get('config_language_id')])) {
 	                         $title = $module['links']['title'][$this->config->get('config_language_id')];
 	                    } else {
 	                         $title = 'Set name!';
 	                    }
-	                    
+
 	                    $links = array();
-	                    
+
 	                    if(isset($module['links']['array'])) { foreach($module['links']['array'] as $link) {
 	                         if(isset($link['name'][$this->config->get('config_language_id')])) {
 	                              $name = $link['name'][$this->config->get('config_language_id')];
 	                         } else {
 	                              $name = 'Set name!';
 	                         }
-	                         
+
 	                         $links[] = array(
 	                              'name' => $name,
 	                              'url' => $link['url'],
 	                              'sort' => $link['sort']
 	                         );
 	                    } }
-	                    
+
 	                    usort($links, "cmp_by_optionNumber");
-	                    
+
 	                    if(!isset($module['links']['module_layout'])) $module['links']['module_layout'] = 'default.tpl';
-	                    
+
 	                    $content = array(
 	                         'title' => $title,
 	                         'limit' => $module['links']['limit'],
@@ -225,16 +225,16 @@ class ControllerModuleAdvancedGrid extends Controller {
 	                         'links' => $links
 	                    );
 	               }
-	               
+
 	               if($module['type'] == 'products') {
 	                    if(isset($module['products']['title'][$this->config->get('config_language_id')])) {
 	                         $title = $module['products']['title'][$this->config->get('config_language_id')];
 	                    } else {
 	                         $title = 'Set name!';
 	                    }
-	                    
+
 	                    $products = array();
-	                    
+
 	                    // Najnowsze produkty, Specjalne produkty, Najlepiej sprzedajace się produkty, Wybrane produkty z kategorii
 	                    if($module['products']['get_products_from'] == 'latest' || $module['products']['get_products_from'] == 'special' || $module['products']['get_products_from'] == 'bestsellers' || $module['products']['get_products_from'] == 'category' || $module['products']['get_products_from'] == 'random' || $module['products']['get_products_from'] == 'people_also_bought' || $module['products']['get_products_from'] == 'most_viewed' || $module['products']['get_products_from'] == 'related') {
           	     		if($module['products']['get_products_from'] == 'latest') {
@@ -244,7 +244,7 @@ class ControllerModuleAdvancedGrid extends Controller {
           	     				'start' => 0,
           	     				'limit' => $module['products']['limit']
           	     			);
-          	     
+
           	     			$results = $this->model_catalog_product->getProducts($data_products);
           	          	} elseif($module['products']['get_products_from'] == 'special') {
           	          			$data_products = array(
@@ -253,12 +253,12 @@ class ControllerModuleAdvancedGrid extends Controller {
           	          				'start' => 0,
           	          				'limit' => $module['products']['limit']
           	          			);
-          	          	
+
           	          			$results = $this->model_catalog_product->getProductSpecials($data_products);
           	          	} elseif($module['products']['get_products_from'] == 'bestsellers') {
           	          			$results = $this->model_catalog_product->getBestSellerProducts($module['products']['limit']);
           	          	} elseif($module['products']['get_products_from'] == 'category') {
-          	          			$select_categories = explode(',', $module['products']['categories']);	
+          	          			$select_categories = explode(',', $module['products']['categories']);
           	          			$results = array();
           	          			foreach($select_categories as $category) {
           	          				$data_products = array(
@@ -270,7 +270,7 @@ class ControllerModuleAdvancedGrid extends Controller {
           	          				);
           	          				$results = array_merge($results, $this->model_catalog_product->getProducts($data_products));
           	          			}
-          	          			$results = array_slice($results, 0, (int)$module['products']['limit']);	
+          	          			$results = array_slice($results, 0, (int)$module['products']['limit']);
           	          	} elseif($module['products']['get_products_from'] == 'random') {
           	          	          $this->load->model('catalog/products');
           	          			$results = $this->model_catalog_products->getRandomProducts($module['products']['limit']);
@@ -284,32 +284,32 @@ class ControllerModuleAdvancedGrid extends Controller {
                                    $this->load->model('catalog/products');
                                    $results = $this->model_catalog_products->getProductsRelated($module['products']['limit']);
           	          	}
-          	          
+
           	          	foreach ($results as $result) {
           	          			if ($result['image']) {
           	          				$image = $this->model_tool_image->resize($result['image'], $module['products']['width'], $module['products']['height']);
           	          			} else {
           	          				$image = false;
           	          			}
-          	          						
+
           	          			if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
           	          				$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')));
           	          			} else {
           	          				$price = false;
           	          			}
-          	          					
+
           	          			if ((float)$result['special']) {
           	          				$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')));
           	          			} else {
           	          				$special = false;
           	          			}
-          	          			
+
           	          			if ($this->config->get('config_review_status')) {
           	          				$rating = $result['rating'];
           	          			} else {
           	          				$rating = false;
           	          			}
-          	          			
+
           	          			$products[] = array(
           	          				'product_id' => $result['product_id'],
           	          				'thumb'   	 => $image,
@@ -322,44 +322,45 @@ class ControllerModuleAdvancedGrid extends Controller {
           	          			);
           	          	}
      	     		}
-     	     		
+
      	     		// Wybrane produkty
      	     		if($module['products']['get_products_from'] == 'products') {
-     	     			$select_products = explode(',', $module['products']['products']);	
-     	     			$select_products = array_slice($select_products, 0, (int)$module['products']['limit']);	
-     	     			
+     	     			$select_products = explode(',', $module['products']['products']);
+     	     			$select_products = array_slice($select_products, 0, (int)$module['products']['limit']);
+
      	     			foreach ($select_products as $product_id) {
      	     				$product_info = $this->model_catalog_product->getProduct($product_id);
-     	     				
+
      	     				if ($product_info) {
      	     					if ($product_info['image']) {
      	     						$image = $this->model_tool_image->resize($product_info['image'], $module['products']['width'], $module['products']['height']);
      	     					} else {
      	     						$image = false;
      	     					}
-     	     	
+
      	     					if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
      	     						$price = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')));
      	     					} else {
      	     						$price = false;
      	     					}
-     	     							
+
      	     					if ((float)$product_info['special']) {
      	     						$special = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')));
      	     					} else {
      	     						$special = false;
      	     					}
-     	     					
+
      	     					if ($this->config->get('config_review_status')) {
      	     						$rating = $product_info['rating'];
      	     					} else {
      	     						$rating = false;
      	     					}
-     	     						
+
      	     					$products[] = array(
      	     						'product_id' => $product_info['product_id'],
      	     						'thumb'   	 => $image,
      	     						'name'    	 => $product_info['name'],
+											'attribute_groups' => $this->model_catalog_product->getProductAttributes($result['product_id']),
      	     						'price'   	 => $price,
      	     						'special' 	 => $special,
      	     						'rating'     => $rating,
@@ -369,7 +370,7 @@ class ControllerModuleAdvancedGrid extends Controller {
      	     				}
      	     			}
      	     		}
-     	     		
+
      	     		$content = array(
      	     		     'title' => $title,
      	     		     'limit' => $module['products']['limit'],
@@ -377,22 +378,22 @@ class ControllerModuleAdvancedGrid extends Controller {
      	     		     'products' => $products
      	     		);
 	               }
-	               
+
 	               if($module['type'] == 'products_tabs') {
 	                    if(isset($module['products_tabs']['title'][$this->config->get('config_language_id')])) {
 	                         $title = html_entity_decode($module['products_tabs']['title'][$this->config->get('config_language_id')], ENT_QUOTES, 'UTF-8');
 	                    } else {
 	                         $title = 'Set name!';
 	                    }
-	                    
+
 	                    if(isset($module['products_tabs']['description'][$this->config->get('config_language_id')])) {
 	                         $description = html_entity_decode($module['products_tabs']['description'][$this->config->get('config_language_id')], ENT_QUOTES, 'UTF-8');
 	                    } else {
 	                         $description = 'Set name!';
 	                    }
-	                    
+
 	                    $products_tabs = array();
-	                    
+
 	                    if(isset($module['products_tabs']['products'])) {
 	                         if(is_array($module['products_tabs']['products'])) {
 	                              foreach($module['products_tabs']['products'] as $product_tab) {
@@ -401,9 +402,9 @@ class ControllerModuleAdvancedGrid extends Controller {
 	                                   } else {
 	                                        $name = 'Set name!';
 	                                   }
-	                                   
+
 	                                   $products = array();
-	                                   
+
 	                                   // Najnowsze produkty, Specjalne produkty, Najlepiej sprzedajace się produkty, Wybrane produkty z kategorii
 	                                   if($product_tab['get_products_from'] == 'latest' || $product_tab['get_products_from'] == 'special' || $product_tab['get_products_from'] == 'bestsellers' || $product_tab['get_products_from'] == 'category' || $product_tab['get_products_from'] == 'random' || $product_tab['get_products_from'] == 'people_also_bought' || $product_tab['get_products_from'] == 'most_viewed' || $product_tab['get_products_from'] == 'related') {
 	                              		if($product_tab['get_products_from'] == 'latest') {
@@ -413,7 +414,7 @@ class ControllerModuleAdvancedGrid extends Controller {
 	                              				'start' => 0,
 	                              				'limit' => $module['products_tabs']['limit']
 	                              			);
-	                              
+
 	                              			$results = $this->model_catalog_product->getProducts($data_products);
 	                                   	} elseif($product_tab['get_products_from'] == 'special') {
 	                                   			$data_products = array(
@@ -422,12 +423,12 @@ class ControllerModuleAdvancedGrid extends Controller {
 	                                   				'start' => 0,
 	                                   				'limit' => $module['products_tabs']['limit']
 	                                   			);
-	                                   	
+
 	                                   			$results = $this->model_catalog_product->getProductSpecials($data_products);
 	                                   	} elseif($product_tab['get_products_from'] == 'bestsellers') {
 	                                   			$results = $this->model_catalog_product->getBestSellerProducts($module['products_tabs']['limit']);
 	                                   	} elseif($product_tab['get_products_from'] == 'category') {
-	                                   			$select_categories = explode(',', $product_tab['categories']);	
+	                                   			$select_categories = explode(',', $product_tab['categories']);
 	                                   			$results = array();
 	                                   			foreach($select_categories as $category) {
 	                                   				$data_products = array(
@@ -439,7 +440,7 @@ class ControllerModuleAdvancedGrid extends Controller {
 	                                   				);
 	                                   				$results = array_merge($results, $this->model_catalog_product->getProducts($data_products));
 	                                   			}
-	                                   			$results = array_slice($results, 0, (int)$module['products_tabs']['limit']);	
+	                                   			$results = array_slice($results, 0, (int)$module['products_tabs']['limit']);
 	                                   	} elseif($product_tab['get_products_from'] == 'random') {
 	                                   	          $this->load->model('catalog/products');
 	                                   			$results = $this->model_catalog_products->getRandomProducts($module['products_tabs']['limit']);
@@ -453,32 +454,32 @@ class ControllerModuleAdvancedGrid extends Controller {
 	                                             $this->load->model('catalog/products');
 	                                             $results = $this->model_catalog_products->getProductsRelated($module['products_tabs']['limit']);
 	                                   	}
-	                                   
+
 	                                   	foreach ($results as $result) {
 	                                   			if ($result['image']) {
 	                                   				$image = $this->model_tool_image->resize($result['image'], $module['products_tabs']['width'], $module['products_tabs']['height']);
 	                                   			} else {
 	                                   				$image = false;
 	                                   			}
-	                                   						
+
 	                                   			if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
 	                                   				$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')));
 	                                   			} else {
 	                                   				$price = false;
 	                                   			}
-	                                   					
+
 	                                   			if ((float)$result['special']) {
 	                                   				$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')));
 	                                   			} else {
 	                                   				$special = false;
 	                                   			}
-	                                   			
+
 	                                   			if ($this->config->get('config_review_status')) {
 	                                   				$rating = $result['rating'];
 	                                   			} else {
 	                                   				$rating = false;
 	                                   			}
-	                                   			
+
 	                                   			$products[] = array(
 	                                   				'product_id' => $result['product_id'],
 	                                   				'thumb'   	 => $image,
@@ -491,40 +492,40 @@ class ControllerModuleAdvancedGrid extends Controller {
 	                                   			);
 	                                   	}
 	                              	}
-	                              	
+
 	                              	// Wybrane produkty
 	                              	if($product_tab['get_products_from'] == 'products') {
-	                              		$select_products = explode(',', $product_tab['products']);	
-	                              		$select_products = array_slice($select_products, 0, (int)$module['products_tabs']['limit']);	
-	                              		
+	                              		$select_products = explode(',', $product_tab['products']);
+	                              		$select_products = array_slice($select_products, 0, (int)$module['products_tabs']['limit']);
+
 	                              		foreach ($select_products as $product_id) {
 	                              			$product_info = $this->model_catalog_product->getProduct($product_id);
-	                              			
+
 	                              			if ($product_info) {
 	                              				if ($product_info['image']) {
 	                              					$image = $this->model_tool_image->resize($product_info['image'], $module['products_tabs']['width'], $module['products_tabs']['height']);
 	                              				} else {
 	                              					$image = false;
 	                              				}
-	                              
+
 	                              				if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
 	                              					$price = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')));
 	                              				} else {
 	                              					$price = false;
 	                              				}
-	                              						
+
 	                              				if ((float)$product_info['special']) {
 	                              					$special = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')));
 	                              				} else {
 	                              					$special = false;
 	                              				}
-	                              				
+
 	                              				if ($this->config->get('config_review_status')) {
 	                              					$rating = $product_info['rating'];
 	                              				} else {
 	                              					$rating = false;
 	                              				}
-	                              					
+
 	                              				$products[] = array(
 	                              					'product_id' => $product_info['product_id'],
 	                              					'thumb'   	 => $image,
@@ -538,15 +539,15 @@ class ControllerModuleAdvancedGrid extends Controller {
 	                              			}
 	                              		}
 	                              	}
-	                                   
+
 	                                   $products_tabs[] = array(
 	                                        'name' => $name,
 	                                        'products' => $products
 	                                   );
-	                              }     
+	                              }
 	                         }
 	                    }
-	               	
+
 	               	$content = array(
 	               	     'title' => $title,
 	               	     'description' => $description,
@@ -555,7 +556,7 @@ class ControllerModuleAdvancedGrid extends Controller {
 	               	     'products_tabs' => $products_tabs
 	               	);
 	               }
-	               
+
 	               $output[] = array(
 	                    'sort' => $module['sort'],
 	                    'type' => $module['type'],
@@ -563,9 +564,9 @@ class ControllerModuleAdvancedGrid extends Controller {
 	               );
 	          }
 	     }
-	     
+
 	     usort($output, "cmp_by_optionNumber");
-	     
+
 	     return $output;
 	}
 }
