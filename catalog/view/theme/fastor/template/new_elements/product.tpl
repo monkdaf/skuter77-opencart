@@ -63,7 +63,6 @@ $config = $this->registry->get('config');
 		<?php } ?>
 	</div>
 	<div class="right">
-<!--	<div>AAA<?php echo $product['attribute_groups']; ?>AAA</div> -->
 		<noindex><div class="name" style="min-height: 79px;"><a rel="nofollow" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
 		<?php if($theme_options->get( 'product_grid_type' ) == '7') { ?>
 		<?php $product_detail = $theme_options->getDataProduct( $product['product_id'] ); ?>
@@ -83,7 +82,7 @@ $config = $this->registry->get('config');
 			<div>
 				<table class="attributes">
 	      	<tbody><tr>
-					<?php if ($product['attribute_groups']) { ?>
+					<?php if (isset($product['attribute_groups']) and $product['attribute_groups']) { ?>
 					  <?php foreach ($product['attribute_groups'] as $attribute_group) { ?>
 					    <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
 					      <?php if(in_array($attribute['attribute_id'], array(12,15,17))) { ?>
