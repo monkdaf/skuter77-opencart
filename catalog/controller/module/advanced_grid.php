@@ -360,7 +360,6 @@ class ControllerModuleAdvancedGrid extends Controller {
      	     						'product_id' => $product_info['product_id'],
      	     						'thumb'   	 => $image,
      	     						'name'    	 => $product_info['name'],
-											'attribute_groups' => $this->model_catalog_product->getProductAttributes($result['product_id']),
      	     						'price'   	 => $price,
      	     						'special' 	 => $special,
      	     						'rating'     => $rating,
