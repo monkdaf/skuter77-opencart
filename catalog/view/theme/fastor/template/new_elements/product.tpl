@@ -79,10 +79,10 @@ $config = $this->registry->get('config');
 
 
 <!-- icons for products -->
+		<?php if (isset($product['attribute_groups']) and $product['attribute_groups']) { ?>
 			<div>
 				<table class="attributes">
 	      	<tbody><tr>
-					<?php if (isset($product['attribute_groups']) and $product['attribute_groups']) { ?>
 					  <?php foreach ($product['attribute_groups'] as $attribute_group) { ?>
 					    <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
 					      <?php if(in_array($attribute['attribute_id'], array(12,15,17))) { ?>
@@ -111,11 +111,10 @@ $config = $this->registry->get('config');
 					      <?php }?>
 					    <?php }?>
 					  <?php } ?>
-					<?php } ?>
 	        </tr></tbody>
 				</table>
 			</div>
-
+	<?php } ?>
 		<div class="only-hover" style="padding-bottom: 90px;">
 
 			<ul>
