@@ -90,19 +90,19 @@ $config = $this->registry->get('config');
 					          switch ($attribute['attribute_id']):
 					              case 12:
 									?>
-														<td><img src="/image/t1.jpg"></td>
+														<td><img src="/image/t1.jpg" alt="Diam"></td>
 														<td><?php echo $attribute['text']; ?></td>
 									<?php
 									          break;
 					              case 15:
 									?>
-														<td><img src="/image/t2.jpg"></td>
+														<td><img src="/image/t2.jpg" alt="Speed"></td>
 														<td><?php echo $attribute['text']; ?></td>
 									<?php
 					                  break;
 					              case 17:
 									?>
-									          <td><img src="/image/t3.jpg"></td>
+									          <td><img src="/image/t3.jpg" alt="Dist"></td>
 														<td><?php echo $attribute['text']; ?></td>
 									<?php
 					                  break;
