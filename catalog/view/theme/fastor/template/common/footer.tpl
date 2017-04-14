@@ -352,22 +352,27 @@ if($this->registry->has('theme_options') == true) {
      					     </div>
      					</div>
 					<?php } ?>
-
-     <div class="col-sm-5" style="font-size: 20px;color: #FFF;font-weight: 500;padding-top: 8px;position: relative;margin-top:-40px;">
-            <img src="image/catalog/computer4/icon-phone.png" alt="Phone" style="display: block;float: left;position: relative;margin-left: -4px;margin-right: 10px;">
-            <p><?php echo $telephone; ?></p>
+<div class="row">
+     <div class="col-sm-5 col-xs-12 footer-about-info-common">
+            <img class="footer-about-info-icon" src="image/catalog/computer4/icon-phone.png" alt="Phone">
+            <p><a href="tel:+74994902075"><?php echo $telephone; ?></a></p>
+            <!-- <p><?php echo $telephone; ?></p> -->
      </div>
 
-     <div class="col-sm-4" style="font-size: 20px;color: #FFF;font-weight: 500;padding-top: 8px;position: relative;margin-left:-100px;margin-top:-40px;">
-          <img src="image/catalog/computer4/icon-mail.png" alt="Mail" style="display: block;float: left;position: relative;margin-left: -4px;margin-right: 10px;">
-          <p>info@skuter77.ru</p>
-     </div>
-     <div class="col-sm-2" style="margin-top:-25px;" >
-          <p itemscope itemtype="http://schema.org/LocalBusiness" align="center">
-<span itemprop="name">Skuter77</span> © 2016</p>
+     <!-- <div class="col-sm-4 footer-about-info-common" style="margin-left:-100px"> -->
+     <div class="col-sm-4 col-xs-12 footer-about-info-common">
+    		<img class="footer-about-info-icon" src="image/catalog/computer4/icon-mail.png" alt="Mail">
+          <p><a href="mailto:info@skuter77.ru">info@skuter77.ru</a></p>
+					 <!-- <p>info@skuter77.ru</p> -->
      </div>
 
-		 <div class="col-sm-1" style="font-size: 20px;color: #FFF;font-weight: 500;padding-top: 8px;position: relative;margin-top:-40px;">
+     <!-- <div class="col-sm-2 footer-about-info-common" style="margin-top:-25px;" > -->
+		 <div class="col-sm-2 col-xs-12 footer-about-info-common-copyright">
+			 <p itemscope itemtype="http://schema.org/LocalBusiness">
+				 <span itemprop="name">Skuter77</span> © 2016</p>
+     </div>
+
+		 <div class="col-sm-1 col-xs-12 footer-about-info-common">
 			 <!-- Yandex.Metrika informer -->
 			 <a href="https://metrika.yandex.ru/stat/?id=35209050&amp;from=informer"
 			 target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/35209050/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
@@ -404,7 +409,7 @@ if($this->registry->has('theme_options') == true) {
 			 <noscript><div><img src="https://mc.yandex.ru/watch/35209050" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 			 <!-- /Yandex.Metrika counter -->
      </div>
-
+</div>
 				</div>
 			</div>
 		</div>
