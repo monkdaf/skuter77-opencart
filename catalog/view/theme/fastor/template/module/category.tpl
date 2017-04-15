@@ -7,7 +7,7 @@ if($this->registry->has('theme_options') == false) {
 $theme_options = $this->registry->get('theme_options'); ?>
 
 <div class="box box-with-categories <?php if($theme_options->get( 'category_box_style' ) == '3') { echo 'category-box-type-4 category-box-type-2'; } ?> <?php if($theme_options->get( 'category_box_style' ) == '2') { echo 'category-box-type-3 category-box-type-2'; } ?> <?php if($theme_options->get( 'category_box_style' ) == '1') { echo 'category-box-type-2'; } ?> box-no-advanced" style="padding-top: 0px !important;">
-  <noindex><div class="box-heading"><?php echo $heading_title; ?></div></noindex>
+  <!--noindex--><div class="box-heading"><?php echo $heading_title; ?></div><!--/noindex-->
   <div class="strip-line"></div>
   <div class="box-content box-category">
     <ul class="accordion" id="accordion-category">

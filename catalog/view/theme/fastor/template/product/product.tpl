@@ -514,7 +514,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
     	</div>
 
     	<?php if($theme_options->get( 'custom_block', 'product_page', $config->get( 'config_language_id' ), 'status' ) == 1 || count($product_custom_block)) { ?>
-    	<div class="col-md-3 col-sm-12"><noindex>
+    	<div class="col-md-3 col-sm-12"><!--noindex-->
     	     <?php if($theme_options->get( 'custom_block', 'product_page', $config->get( 'config_language_id' ), 'status' ) == 1) { ?>
     		<div class="product-block">
     			<?php if($theme_options->get( 'custom_block', 'product_page', $config->get( 'config_language_id' ), 'heading' ) != '') { ?>
@@ -527,7 +527,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
     		</div>
     		<?php } ?>
 
-    		<?php foreach ($product_custom_block as $module) { echo $module; } ?></noindex>
+    		<?php foreach ($product_custom_block as $module) { echo $module; } ?><!--/noindex-->
     	</div>
     	<?php } ?>
     </div>

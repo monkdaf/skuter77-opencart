@@ -27,7 +27,7 @@ $part = explode("|||", $desc);
 
 
   <?php if ($categories && $theme_options->get('refine_search_style') != '2') { ?>
-  <div class="refine_search_overflow text-center"><noindex><h2 class="refine_search"><?php echo $text_refine; ?></h2></noindex></div>
+  <div class="refine_search_overflow text-center"><!--noindex--><h2 class="refine_search"><?php echo $text_refine; ?></h2><!--/noindex--></div>
   <div class="category-list<?php if ($theme_options->get('refine_search_style') == '1') { echo ' category-list-text-only'; } ?>">
   	<div class="row">
   	  <?php
@@ -69,7 +69,7 @@ $part = explode("|||", $desc);
   <?php } ?>
   <?php if ($products) { ?>
   <!-- Filter -->
-  <noindex><div class="product-filter clearfix">
+  <!--noindex--><div class="product-filter clearfix">
   	<div class="options">
   		<div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>
 
@@ -104,7 +104,7 @@ $part = explode("|||", $desc);
   			</select>
   		</div>
   	</div>
-  </div></noindex>
+  </div><!--/noindex-->
 
   <!-- Products list -->
   <div class="product-list"<?php if(!($theme_options->get('default_list_grid') == '1')) { echo ' class="active"'; } ?>>
@@ -159,7 +159,7 @@ $part = explode("|||", $desc);
   			</div>
 
   			<div class="name-actions col-sm-4">
-  			     <noindex><div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
+  			     <!--noindex--><div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
   			     <?php if($theme_options->get( 'product_list_type' ) == '4') { ?>
   			     <?php $product_detail = $theme_options->getDataProduct( $product['product_id'] ); ?>
   			     <div class="brand"><?php echo $product_detail['manufacturer']; ?></div>
@@ -194,11 +194,11 @@ $part = explode("|||", $desc);
   					<?php if($theme_options->get( 'display_add_to_wishlist' ) != '0') { ?>
   					<li><a onclick="wishlist.add('<?php echo $product['product_id']; ?>');" data-toggle="tooltip" data-original-title="<?php if($theme_options->get( 'add_to_wishlist_text', $config->get( 'config_language_id' ) ) != '') { echo $theme_options->get( 'add_to_wishlist_text', $config->get( 'config_language_id' ) ); } else { echo 'Add to wishlist'; } ?>"><i class="fa fa-heart"></i></a></li>
   					<?php } ?>
-  				</ul></noindex>
+  				</ul><!--/noindex-->
   			</div>
 
   			<div class="desc col-sm-5">
-  				<noindex><div class="description"><h2>daf</h2><?php echo $product['description']; ?></div></noindex>
+  				<!--noindex--><div class="description"><h2>daf</h2><?php echo $product['description']; ?></div><!--/noindex-->
   			</div>
   		</div>
   	</div>
@@ -227,10 +227,10 @@ $part = explode("|||", $desc);
     </div>
   </div>
 
-  <noindex><div class="row pagination-results">
+  <!--noindex--><div class="row pagination-results">
     <div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
     <div class="col-sm-6 text-right"><?php echo $results; ?></div>
-  </div></noindex>
+  </div><!--/noindex-->
   <?php } ?>
   <?php if (!$categories && !$products) { ?>
   <p style="padding-top: 30px"><?php echo $text_empty; ?></p>

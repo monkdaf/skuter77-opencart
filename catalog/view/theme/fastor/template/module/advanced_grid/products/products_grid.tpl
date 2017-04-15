@@ -1,7 +1,7 @@
-<?php 
-if($this->registry->has('theme_options') == true) { 
+<?php
+if($this->registry->has('theme_options') == true) {
 
-$class = 3; 
+$class = 3;
 $all = 4;
 $id = rand(0, 5000)*rand(5000, 50000);
 
@@ -16,7 +16,7 @@ if(count($module['content']['products']) == 1) { $class = 12; $all = 1; } ?>
 
 <div class="box clearfix box-with-products <?php if($module['content']['title'] == '') { echo 'without-heading'; } ?>">
   <?php if($module['content']['title'] != '') { ?>
-  <noindex><div class="box-heading"><?php echo $module['content']['title']; ?></div></noindex>
+  <!--noindex--><div class="box-heading"><?php echo $module['content']['title']; ?></div><!--/noindex-->
   <div class="strip-line"></div>
   <?php } ?>
   <div class="clear"></div>

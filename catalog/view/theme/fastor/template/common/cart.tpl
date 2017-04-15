@@ -4,7 +4,7 @@ $config = $this->registry->get('config');
 $cart_info = $theme_options->getCart(); ?>
 
 <!-- Cart block -->
-<noindex><div id="cart_block" class="dropdown" style="margin-top: 4px">
+<!--noindex--><div id="cart_block" class="dropdown" style="margin-top: 4px">
 	<div style="margin: 0;font-size: 13px;color: #007ffe;font-weight: 400;">
 		Корзина
 	</div>
@@ -70,5 +70,5 @@ $cart_info = $theme_options->getCart(); ?>
 		<div class="empty"><?php echo $text_empty; ?></div>
 		<?php } ?>
 	</div></div>
-</div></noindex>
+</div><!--/noindex-->
 <?php } ?>

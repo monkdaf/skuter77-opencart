@@ -32,14 +32,14 @@ $modules = new Modules($this->registry); ?>
 						} ?>
 					</div>
 
-					<noindex><div class="col-sm-4">
+					<!--noindex--><div class="col-sm-4">
 						<?php
 						if( count($preface_right) ) {
 							foreach ($preface_right as $module) {
 								echo $module;
 							}
 						} ?>
-					</div></noindex>
+					</div><!--/noindex-->
 				</div>
 				<?php } ?>
 

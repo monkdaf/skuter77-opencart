@@ -63,7 +63,7 @@ $config = $this->registry->get('config');
 		<?php } ?>
 	</div>
 	<div class="right">
-		<noindex><div class="name" style="min-height: 79px;"><a rel="nofollow" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
+		<!--noindex--><div class="name" style="min-height: 79px;"><a rel="nofollow" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
 		<?php if($theme_options->get( 'product_grid_type' ) == '7') { ?>
 		<?php $product_detail = $theme_options->getDataProduct( $product['product_id'] ); ?>
 		<div class="brand"><?php echo $product_detail['manufacturer']; ?></div>
@@ -74,7 +74,7 @@ $config = $this->registry->get('config');
 			<?php } else { ?>
 			<span class="price-old"><?php echo $product['price']; ?> <!-- <i class="fa fa-rub"></i> --></span> <span class="price-new"><?php echo $product['special']; ?> <!-- <i class="fa fa-rub"></i> --></span>
 			<?php } ?>
-		</div></noindex>
+		</div><!--/noindex-->
 		<?php if($theme_options->get( 'display_add_to_compare' ) != '0' || $theme_options->get( 'display_add_to_wishlist' ) != '0' || $theme_options->get( 'display_add_to_cart' ) != '0') { ?>
 
 

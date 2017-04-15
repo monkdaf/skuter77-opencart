@@ -1,5 +1,5 @@
 <?php if ($filter_groups || $categories || $options || $manufacturers || $attributes || $price_slider) { ?>
-    <noindex><div id="filterpro_box">
+    <!--noindex--><div id="filterpro_box">
         <h3>
             <div class="clear_filter"><i class="fa fa-times"> <?php echo $clear_filter?></i></div>
         </h3>
@@ -435,5 +435,5 @@
                 <?php } ?>
             <?php } ?>
         </form>
-    </div></noindex>
+    </div><!--/noindex-->
 <?php } ?>

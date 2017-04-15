@@ -1,10 +1,10 @@
-<?php 
-if($this->registry->has('theme_options') == true) { 
+<?php
+if($this->registry->has('theme_options') == true) {
 
-$class = 3; 
+$class = 3;
 $id = rand(0, 5000)*rand(5000, 50000);
-$all = 4; 
-$row = 4; 
+$all = 4;
+$row = 4;
 
 $theme_options = $this->registry->get('theme_options');
 $config = $this->registry->get('config');
@@ -13,7 +13,7 @@ if($theme_options->get( 'product_per_pow' ) == 6) { $class = 2; }
 if($theme_options->get( 'product_per_pow' ) == 5) { $class = 25; }
 if($theme_options->get( 'product_per_pow' ) == 3) { $class = 4; }
 
-if($theme_options->get( 'product_per_pow' ) > 1) { $row = $theme_options->get( 'product_per_pow' ); $all = $theme_options->get( 'product_per_pow' ); } 
+if($theme_options->get( 'product_per_pow' ) > 1) { $row = $theme_options->get( 'product_per_pow' ); $all = $theme_options->get( 'product_per_pow' ); }
 ?>
 <div class="box clearfix box-with-products <?php if($theme_options->get( 'product_scroll_featured' ) != '0') { echo 'with-scroll';  } ?> box-no-advanced">
   <?php if($theme_options->get( 'product_scroll_featured' ) != '0') { ?>
@@ -21,8 +21,8 @@ if($theme_options->get( 'product_per_pow' ) > 1) { $row = $theme_options->get( '
   <a class="next" href="#myCarousel<?php echo $id; ?>" id="myCarousel<?php echo $id; ?>_next"><span></span></a>
   <a class="prev" href="#myCarousel<?php echo $id; ?>" id="myCarousel<?php echo $id; ?>_prev"><span></span></a>
   <?php } ?>
-	
-  <noindex><div class="box-heading"><?php echo $heading_title; ?></div></noindex>
+
+  <!--noindex--><div class="box-heading"><?php echo $heading_title; ?></div><!--/noindex-->
   <div class="strip-line"></div>
   <div class="clear"></div>
   <div class="box-content products">
@@ -48,7 +48,7 @@ if($theme_options->get( 'product_per_pow' ) > 1) { $row = $theme_options->get( '
 <script type="text/javascript">
 $(document).ready(function() {
   var owl<?php echo $id; ?> = $(".box #myCarousel<?php echo $id; ?> .carousel-inner");
-	
+
   $("#myCarousel<?php echo $id; ?>_next").click(function(){
       owl<?php echo $id; ?>.trigger('owl.next');
       return false;
@@ -57,7 +57,7 @@ $(document).ready(function() {
       owl<?php echo $id; ?>.trigger('owl.prev');
       return false;
   });
-    
+
   owl<?php echo $id; ?>.owlCarousel({
   	  slideSpeed : 500,
       singleItem:true
