@@ -203,7 +203,7 @@ if($this->registry->has('theme_options') == true) {
 			<div class="pattern">
 				<div class="container">
 				        <div class="container">
-				        <div align="center" style="padding-top:20px; font-size:16px; margin-bottom:-10px;">
+				        <div class="footer-my-menu">
 <a href="/giroskutery/">Гироскутеры</a>
 <a style="margin-left:20px;" href="/samokaty/">Самокаты</a>
 <a style="margin-left:20px;" href="/monokoleso/">Моноколесо</a>
