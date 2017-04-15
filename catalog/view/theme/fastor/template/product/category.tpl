@@ -239,7 +239,7 @@ $part = explode("|||", $desc);
   </div>-->
   <?php } ?>
   <br />
-  <?php echo $part[1]; ?>
+  <?php if ($part[1]) {echo $part[1];} ?>
 <script type="text/javascript"><!--
 function display(view) {
 
