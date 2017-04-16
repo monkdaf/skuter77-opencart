@@ -107,7 +107,8 @@ $part = explode("|||", $desc);
   </div><!--/noindex-->
 
   <!-- Products list -->
-  <div class="product-list"<?php if(!($theme_options->get('default_list_grid') == '1')) { echo ' class="active"'; } ?>>
+  <!-- <div class="product-list"<?php if(!($theme_options->get('default_list_grid') == '1')) { echo ' class="active"'; } ?>> -->
+  <div class="product-list<?php if(!($theme_options->get('default_list_grid') == '1')) { echo ' active'; } ?>">
   	<?php foreach ($products as $product) { ?>
   	<!-- Product -->
   	<div>
