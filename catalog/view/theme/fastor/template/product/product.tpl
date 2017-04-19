@@ -610,14 +610,14 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 	  $tabs[] = array(
 	  	'heading' => $tab_description,
 	  	'content' => 'description',
-	  	'sort' => 1
+	  	'sort' => 3
 	  );
 
 	  if ($attribute_groups) {
 		  $tabs[] = array(
 		  	'heading' => $tab_attribute,
 		  	'content' => 'attribute',
-		  	'sort' => 3
+		  	'sort' => 1
 		  );
 	  }
 
