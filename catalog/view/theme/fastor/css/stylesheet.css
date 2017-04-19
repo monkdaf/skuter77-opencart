@@ -7037,11 +7037,12 @@ position: absolute;
 			.product-info .price,
 			.product-info .options {
 				padding: 24px 0px 70px 0px;
-				background: url(../img/bg-megamenu.png) bottom left repeat-x;
+				/*background: url(../img/bg-megamenu.png) bottom left repeat-x;*/
 			}
 
 			     .product-info .description {
-			          padding-top: 0px;
+			          /*padding-top: 0px;*/
+			          padding-top: 10px;
 			          font-weight: 600;
 			          line-height: 23px;
 					  background: none;
@@ -7067,8 +7068,10 @@ position: absolute;
 
 			     .product-info .price {
 			          /*background: none;*/
-					  padding: 0px 0px 22px 0px;
-					  margin-bottom: 22px;
+					  /*padding: 0px 0px 22px 0px;*/
+					  padding: 0px 0px 0px 0px;
+					  /*margin-bottom: 22px;*/
+					  margin-bottom: 0px;
 			     }
 
 				.product-info .price .price-new {
@@ -7389,7 +7392,8 @@ position: absolute;
 							}
 
 					.product-info .cart .add-to-cart #button-cart {
-					     font-size: 12px !important;
+					     /*font-size: 12px !important;*/
+					     font-size: 20px !important;
 					}
 
 				/* Product info -> Add to compare, wishlist */

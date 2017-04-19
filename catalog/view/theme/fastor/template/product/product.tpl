@@ -220,6 +220,52 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			      </div>
 			      <?php } ?>
 
+            <div class="cart">
+			        <div class="add-to-cart clearfix">
+			          <?php
+			          $product_enquiry = $modules->getModules('product_enquiry');
+			          if( count($product_enquiry) ) {
+			          	foreach ($product_enquiry as $module) {
+			          		echo $module;
+			          	}
+			          } else { ?>
+                  <div class="tovbut">
+                    <input type="button" value="<?php echo $button_cart; ?>" id="button-cart" rel="<?php echo $product_id; ?>" data-loading-text="<?php echo $text_loading; ?>" class="button-blue" />
+                    <input type="button" value="Купить в 1 клик" id="button-cart" rel="<?php echo $product_id; ?>" data-loading-text="<?php echo $text_loading; ?>" data-product_id = <?php echo $product_id; ?> class="callme button-fastbuy">
+                  </div>
+                  <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" />
+
+<!--
+     			          <p><?php echo $entry_qty; ?></p>
+     			          <div class="quantity">
+     				          <input type="text" name="quantity" id="quantity_wanted" size="2" value="<?php echo $minimum; ?>" />
+     				          <a href="#" id="q_up"><i class="fa fa-plus"></i></a>
+     				          <a href="#" id="q_down"><i class="fa fa-minus"></i></a>
+     			          </div>
+     			          <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" />
+     			          <input type="button" value="<?php echo $button_cart; ?>" id="button-cart" rel="<?php echo $product_id; ?>" data-loading-text="<?php echo $text_loading; ?>" class="button button-blue" />
+
+						  <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" data-product_id = <?php echo $product_id; ?> class="btn btn-primary btn-lg btn-block callme button-fastbuy">Быстрый заказ</button>
+-->
+     			          <?php
+     			          $product_question = $modules->getModules('product_question');
+     			          if( count($product_question) ) {
+     			          	foreach ($product_question as $module) {
+     			          		echo $module;
+     			          	}
+     			          } ?>
+			          <?php } ?>
+			        </div>
+
+			        <div class="links clearfix">
+			        	<a onclick="wishlist.add('<?php echo $product_id; ?>');"><?php if($theme_options->get( 'add_to_wishlist_text', $config->get( 'config_language_id' ) ) != '') { echo $theme_options->get( 'add_to_wishlist_text', $config->get( 'config_language_id' ) ); } else { echo 'В избранное'; } ?></a>
+			        	<a onclick="compare.add('<?php echo $product_id; ?>');"><?php if($theme_options->get( 'add_to_compare_text', $config->get( 'config_language_id' ) ) != '') { echo $theme_options->get( 'add_to_compare_text', $config->get( 'config_language_id' ) ); } else { echo 'Сравнение'; } ?></a>
+			        </div>
+
+			        <?php if ($minimum > 1) { ?>
+			        <div class="minimum"><?php echo $text_minimum; ?></div>
+			        <?php } ?>
+			      </div>
 
 
 			      <div class="description">
@@ -461,7 +507,8 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			      </div>
 			      <?php } ?>
 
-			      <div class="cart">
+<!--
+  		      <div class="cart">
 			        <div class="add-to-cart clearfix">
 			          <?php
 			          $product_enquiry = $modules->getModules('product_enquiry');
@@ -477,9 +524,9 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
      				          <a href="#" id="q_down"><i class="fa fa-minus"></i></a>
      			          </div>
      			          <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" />
-     			          <input type="button" value="<?php echo $button_cart; ?>" id="button-cart" rel="<?php echo $product_id; ?>" data-loading-text="<?php echo $text_loading; ?>" class="button" />
+     			          <input type="button" value="<?php echo $button_cart; ?>" id="button-cart" rel="<?php echo $product_id; ?>" data-loading-text="<?php echo $text_loading; ?>" class="button button-blue" />
 
-						  <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" data-product_id = <?php echo $product_id; ?> class="btn btn-primary btn-lg btn-block callme">Быстрый заказ</button>
+						  <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" data-product_id = <?php echo $product_id; ?> class="btn btn-primary btn-lg btn-block callme button-fastbuy">Быстрый заказ</button>
 
      			          <?php
      			          $product_question = $modules->getModules('product_question');
@@ -500,6 +547,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			        <div class="minimum"><?php echo $text_minimum; ?></div>
 			        <?php } ?>
 			      </div>
+-->
 			     </div><!-- End #product -->
 
 			      <?php
