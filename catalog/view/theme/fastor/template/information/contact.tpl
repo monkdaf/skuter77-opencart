@@ -1,11 +1,11 @@
-<?php echo $header; 
+<?php echo $header;
 $theme_options = $this->registry->get('theme_options');
-$config = $this->registry->get('config'); 
+$config = $this->registry->get('config');
 include('catalog/view/theme/' . $config->get('config_template') . '/template/new_elements/wrapper_top.tpl'); ?>
 
 <div class="row">
 	<div class="col-sm-<?php if($theme_options->get( 'custom_block', 'contact_page', $config->get( 'config_language_id' ), 'status' ) == 1) { echo 9; } else { echo 12; } ?>">
-	
+
 <h3><?php echo $text_location; ?></h3>
     <div class="row" style="padding-bottom: 10px">
       <?php if ($image) { ?>
@@ -119,15 +119,15 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
     </div>
     <?php echo $captcha; ?>
   </fieldset>
-  <!--<div class="buttons">
+  <div class="buttons">
     <div class="pull-right">
       <input class="btn btn-primary" type="submit" value="<?php echo $button_submit; ?>" />
     </div>
-  </div>-->
-</form>
-	
   </div>
-  	
+</form>
+
+  </div>
+
   <?php if($theme_options->get( 'custom_block', 'contact_page', $config->get( 'config_language_id' ), 'status' ) == 1) { ?>
   <div class="col-sm-3">
   	<div class="product-block">
@@ -142,6 +142,6 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
   </div>
   <?php } ?>
 </div>
-  
+
 <?php include('catalog/view/theme/' . $config->get('config_template') . '/template/new_elements/wrapper_bottom.tpl'); ?>
 <?php echo $footer; ?>
