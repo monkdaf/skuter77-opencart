@@ -220,7 +220,11 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			      </div>
 			      <?php } ?>
 
-            <div class="cart">
+
+
+
+
+           <div class="cart">
 			        <div class="add-to-cart clearfix">
 			          <?php
 			          $product_enquiry = $modules->getModules('product_enquiry');
@@ -229,11 +233,11 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			          		echo $module;
 			          	}
 			          } else { ?>
-                  <div class="tovbut">
+                 <div class="tovbut">
                     <input type="button" value="<?php echo $button_cart; ?>" id="button-cart" rel="<?php echo $product_id; ?>" data-loading-text="<?php echo $text_loading; ?>" class="button-blue" />
                     <input type="button" value="Купить в 1 клик" id="button-cart" rel="<?php echo $product_id; ?>" data-loading-text="<?php echo $text_loading; ?>" data-product_id = <?php echo $product_id; ?> class="callme button-fastbuy">
                   </div>
-                  <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" />
+                <!--  <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" /> -->
 
 <!--
      			          <p><?php echo $entry_qty; ?></p>
@@ -507,6 +511,9 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			      </div>
 			      <?php } ?>
 
+
+  <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" />
+
 <!--
   		      <div class="cart">
 			        <div class="add-to-cart clearfix">
@@ -523,6 +530,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
      				          <a href="#" id="q_up"><i class="fa fa-plus"></i></a>
      				          <a href="#" id="q_down"><i class="fa fa-minus"></i></a>
      			          </div>
+
      			          <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" />
      			          <input type="button" value="<?php echo $button_cart; ?>" id="button-cart" rel="<?php echo $product_id; ?>" data-loading-text="<?php echo $text_loading; ?>" class="button button-blue" />
 
@@ -547,7 +555,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			        <div class="minimum"><?php echo $text_minimum; ?></div>
 			        <?php } ?>
 			      </div>
--->
+ -->
 			     </div><!-- End #product -->
 
 			      <?php
