@@ -3,13 +3,37 @@ $theme_options = $this->registry->get('theme_options');
 $config = $this->registry->get('config');
 $background_status = false;
 $product_page = true;
-include('catalog/view/theme/'.$config->get('config_template').'/template/new_elements/wrapper_top.tpl'); ?>
+include('catalog/view/theme/'.$config->get('config_template').'/template/new_elements/wrapper_top.tpl');
+?>
+
+<!-- <div class="container">
+  <div class="clearfix">
+  <div class="row">
+    <div class="col-md-12">
+             <h2 id="title-page"><?php echo $heading_title; ?>
+              <?php if(isset($weight)) { if ($weight) { ?>
+              &nbsp;(<?php echo $weight; ?>)
+              <?php } } ?>
+            </h2>
+
+             <ul class="breadcrumb">
+             	<?php foreach ($breadcrumbs as $i=> $breadcrumb) { ?>
+             	<?php if($i+1<count($breadcrumbs)) { ?>
+             	<li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li><?php } else { ?><li><?php echo $breadcrumb['text']; ?></li><?php } ?>
+                 <?php } ?>
+              </ul>
+    </div>
+    </div>
+  </div>
+</div> -->
 
 <div itemscope itemtype="http://data-vocabulary.org/Product">
   <span itemprop="name" class="hidden"><?php echo $heading_title; ?></span>
   <div class="product-info">
   	<div class="row">
   	     <?php $product_custom_block = $modules->getModules('product_custom_block'); ?>
+
+
   		<div class="col-md-<?php if($theme_options->get( 'custom_block', 'product_page', $config->get( 'config_language_id' ), 'status' ) == 1 || count($product_custom_block)) { echo 9; } else { echo 12; } ?> col-sm-12">
   			<div class="row" id="quickview_product">
 			    <?php if($theme_options->get( 'product_image_zoom' ) != 2) { ?>
@@ -62,7 +86,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			    	});
 			    </script>
 			    <?php } ?>
-			    <?php $image_grid = 7; $product_center_grid = 5;
+			    <?php $image_grid = 6; $product_center_grid = 6;
 			    if ($theme_options->get( 'product_image_size' ) == 1) {
 			    	$image_grid = 4; $product_center_grid = 8;
 			    }

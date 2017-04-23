@@ -1,6 +1,6 @@
-<?php $grid_center = 12; 
-if($column_left != '') $grid_center = $grid_center-3; 
-if($column_right != '') $grid_center = $grid_center-3; 
+<?php $grid_center = 12;
+if($column_left != '') $grid_center = $grid_center-3;
+if($column_right != '') $grid_center = $grid_center-3;
 $modules = new Modules($this->registry); ?>
 
 <!-- BREADCRUMB
@@ -21,20 +21,20 @@ $modules = new Modules($this->registry); ?>
 				                    	&nbsp;(<?php echo $weight; ?>)
 				                    	<?php } } ?>
 				                    </h1>
-				                    
+
 				                   <!-- <ul>
 				                    	<?php foreach ($breadcrumbs as $breadcrumb) { ?>
 				                    	<li><a href="<?php echo $breadcrumb['href']; ?>"><?php if($breadcrumb['text'] != '<i class="fa fa-home"></i>') { echo $breadcrumb['text']; } else { if($theme_options->get( 'home_text', $config->get( 'config_language_id' ) ) != '') { echo $theme_options->get( 'home_text', $config->get( 'config_language_id' ) ); } else { echo 'Home'; } } ?></a></li>
 				                    	<?php } ?>
 				                    </ul>-->
-				                    
-<ul class="breadcrumb">	
+
+<ul class="breadcrumb">
 	<?php foreach ($breadcrumbs as $i=> $breadcrumb) { ?>
 	<?php if($i+1<count($breadcrumbs)) { ?>
 	<li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li><?php } else { ?><li><?php echo $breadcrumb['text']; ?></li><?php } ?>
     <?php } ?>
-  </ul>			                    
-				                    
+  </ul>
+
 				               </div>
 				               <div class="col-md-6 hidden-xs hidden-sm">
 				                    <?php if(is_array($product_prev_next['prev'])) { ?>
@@ -49,9 +49,9 @@ $modules = new Modules($this->registry); ?>
      				                    <?php } ?>
 				                    <?php } ?>
 				               </div>
-				               
-				               
-				               
+
+
+
      					     <div class="col-md-6 hidden-xs hidden-sm">
 								  <?php if(is_array($product_prev_next['next'])) { ?>
           					          <?php if($theme_options->get( 'product_breadcrumb' ) == '1') { ?>
@@ -68,29 +68,29 @@ $modules = new Modules($this->registry); ?>
           					          </div>
           					          <?php } ?>
      					          <?php } ?>
-								  
+
      					     </div>
      					</div>
 					<?php } else { ?>
-					     <!--<h1 id="title-page"><?php echo $heading_title; ?>
+					     <h1 id="title-page"><?php echo $heading_title; ?>
 					     	<?php if(isset($weight)) { if ($weight) { ?>
 					     	&nbsp;(<?php echo $weight; ?>)
 					     	<?php } } ?>
-					     </h1>-->
-					     
+					     </h1>
+
 					     <!--<ul>
 					     	<?php foreach ($breadcrumbs as $breadcrumb) { ?>
 					     	<li><a href="<?php echo $breadcrumb['href']; ?>"><?php if($breadcrumb['text'] != '<i class="fa fa-home"></i>') { echo $breadcrumb['text']; } else { if($theme_options->get( 'home_text', $config->get( 'config_language_id' ) ) != '') { echo $theme_options->get( 'home_text', $config->get( 'config_language_id' ) ); } else { echo 'Home'; } } ?></a></li>
 					     	<?php } ?>
 					     </ul>-->
-					     
-<ul class="breadcrumb">	
+
+<ul class="breadcrumb">
 	<?php foreach ($breadcrumbs as $i=> $breadcrumb) { ?>
 	<?php if($i+1<count($breadcrumbs)) { ?>
 	<li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li><?php } else { ?><li><?php echo $breadcrumb['text']; ?></li><?php } ?>
     <?php } ?>
-  </ul>	 
-					     
+  </ul>
+
 					<?php } ?>
 				</div>
 			</div>
@@ -106,7 +106,7 @@ $modules = new Modules($this->registry); ?>
 		<div class="shadow"></div>
 		<div class="pattern">
 			<div class="container">
-				<?php 
+				<?php
 				$preface_left = $modules->getModules('preface_left');
 				$preface_right = $modules->getModules('preface_right');
 				?>
@@ -120,7 +120,7 @@ $modules = new Modules($this->registry); ?>
 							}
 						} ?>
 					</div>
-					
+
 					<div class="col-sm-3">
 						<?php
 						if( count($preface_right) ) {
@@ -131,8 +131,8 @@ $modules = new Modules($this->registry); ?>
 					</div>
 				</div>
 				<?php } ?>
-				
-				<?php 
+
+				<?php
 				$preface_fullwidth = $modules->getModules('preface_fullwidth');
 				if( count($preface_fullwidth) ) {
 					echo '<div class="row"><div class="col-sm-12">';
@@ -141,9 +141,9 @@ $modules = new Modules($this->registry); ?>
 					}
 					echo '</div></div>';
 				} ?>
-				
+
 				<div class="row">
-					<?php 
+					<?php
 					$columnleft = $modules->getModules('column_left');
 					if( count($columnleft) ) { ?>
 					<div class="col-md-3" id="column-left">
@@ -154,30 +154,30 @@ $modules = new Modules($this->registry); ?>
 						?>
 					</div>
 					<?php } ?>
-					
+
 					<?php $grid_center = 12; if( count($columnleft) ) { $grid_center = 9; } ?>
 					<div class="col-md-<?php echo $grid_center; ?>">
-						<?php 
+						<?php
 						$content_big_column = $modules->getModules('content_big_column');
-						if( count($content_big_column) ) { 
+						if( count($content_big_column) ) {
 							foreach ($content_big_column as $module) {
 								echo $module;
 							}
 						} ?>
-						
-						<?php 
+
+						<?php
 						$content_top = $modules->getModules('content_top');
-						if( count($content_top) ) { 
+						if( count($content_top) ) {
 							foreach ($content_top as $module) {
 								echo $module;
 							}
 						} ?>
-						
+
 						<div class="row">
-							<?php 
-							$grid_content_top = 12; 
+							<?php
+							$grid_content_top = 12;
 							$grid_content_right = 3;
-							$column_right = $modules->getModules('column_right'); 
+							$column_right = $modules->getModules('column_right');
 							if( count($column_right) ) {
 								if($grid_center == 9) {
 									$grid_content_top = 8;
@@ -198,7 +198,7 @@ $modules = new Modules($this->registry); ?>
 									</div>
 									<?php } ?>
 								<?php } ?>
-								
+
 								<?php if (isset($success)) { ?>
 									<?php if ($success) { ?>
 									<div class="success">
