@@ -10,11 +10,12 @@ $config = $this->registry->get('config');
 $background_status = false;
 include('catalog/view/theme/'.$config->get('config_template').'/template/new_elements/wrapper_top.tpl'); ?>
 <div id="mfilter-content-container">
-  <?php if ($thumb || $description) { ?>
+<!--
+	<?php if ($thumb || $description) { ?>
   <div class="category-info clearfix">
     <?php if ($thumb) { ?>
     <!--<div class="image"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" /></div>-->
-    <?php } ?>
+<!--    <?php } ?>
     <?php if ($description) { ?>
     <?php
 $desc = $description;
@@ -23,7 +24,7 @@ $part = explode("|||", $desc);
     <?php } ?>
   </div>
   <?php } ?>
-
+-->
 
 
   <?php if ($categories && $theme_options->get('refine_search_style') != '2') { ?>
