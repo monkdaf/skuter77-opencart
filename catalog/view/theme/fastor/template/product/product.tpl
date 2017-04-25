@@ -86,7 +86,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			    	});
 			    </script>
 			    <?php } ?>
-			    <?php $image_grid = 6; $product_center_grid = 6;
+			    <?php $image_grid = 5; $product_center_grid = 5;
 			    if ($theme_options->get( 'product_image_size' ) == 1) {
 			    	$image_grid = 4; $product_center_grid = 8;
 			    }
