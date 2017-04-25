@@ -72,11 +72,11 @@ $modules = new Modules($this->registry); ?>
      					     </div>
      					</div>
 					<?php } else { ?>
-					     <h1 id="title-page"><?php echo $heading_title; ?>
+					     <!-- <h1 id="title-page"><?php echo $heading_title; ?>
 					     	<?php if(isset($weight)) { if ($weight) { ?>
 					     	&nbsp;(<?php echo $weight; ?>)
 					     	<?php } } ?>
-					     </h1>
+					     </h1> -->
 
 					     <!--<ul>
 					     	<?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -84,12 +84,12 @@ $modules = new Modules($this->registry); ?>
 					     	<?php } ?>
 					     </ul>-->
 
-<ul class="breadcrumb">
+<!-- <ul class="breadcrumb">
 	<?php foreach ($breadcrumbs as $i=> $breadcrumb) { ?>
 	<?php if($i+1<count($breadcrumbs)) { ?>
 	<li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li><?php } else { ?><li><?php echo $breadcrumb['text']; ?></li><?php } ?>
     <?php } ?>
-  </ul>
+  </ul> -->
 
 					<?php } ?>
 				</div>

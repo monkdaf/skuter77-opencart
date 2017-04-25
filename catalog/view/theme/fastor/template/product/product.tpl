@@ -122,7 +122,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 
 				      <div class="col-sm-<?php if($theme_options->get( 'position_image_additional' ) == 2) { echo 10; } else { echo 12; } ?>">
 				      	<?php if ($thumb) { ?>
-					      <div class="product-image <?php if($theme_options->get( 'product_image_zoom' ) != 2) { if($theme_options->get( 'product_image_zoom' ) == 1) { echo 'inner-cloud-zoom'; } else { echo 'cloud-zoom'; } } ?>">
+					      <div class="product-image <?php if($theme_options->get( 'product_image_zoom' ) != 2) { if($theme_options->get( 'product_image_zoom' ) == 1) { echo 'inner-cloud-zoom'; } else { echo 'cloud-zoom'; } } ?> product-up">
 					      	 <?php if($special && $theme_options->get( 'display_text_sale' ) != '0') { ?>
 					      	 	<?php $text_sale = 'Sale';
 					      	 	if($theme_options->get( 'sale_text', $config->get( 'config_language_id' ) ) != '') {
@@ -191,7 +191,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			      } ?>
 			    </div>
 
-			    <div class="col-sm-<?php echo $product_center_grid; ?> product-center clearfix">
+			    <div class="col-sm-<?php echo $product_center_grid; ?> product-center clearfix product-up">
 			     <div itemprop="offerDetails" itemscope itemtype="http://data-vocabulary.org/Offer">
 			      <?php
 			      $product_options_top = $modules->getModules('product_options_top');
