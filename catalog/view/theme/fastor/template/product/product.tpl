@@ -248,7 +248,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 
 
 
-           <div class="cart">
+          <div class="cart">
 			        <div class="add-to-cart clearfix">
 			          <?php
 			          $product_enquiry = $modules->getModules('product_enquiry');
@@ -285,12 +285,15 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			          <?php } ?>
 			        </div>
 
+<!--
 			        <div class="links clearfix">
 			        	<a onclick="wishlist.add('<?php echo $product_id; ?>');"><?php if($theme_options->get( 'add_to_wishlist_text', $config->get( 'config_language_id' ) ) != '') { echo $theme_options->get( 'add_to_wishlist_text', $config->get( 'config_language_id' ) ); } else { echo 'В избранное'; } ?></a>
 			        	<a onclick="compare.add('<?php echo $product_id; ?>');"><?php if($theme_options->get( 'add_to_compare_text', $config->get( 'config_language_id' ) ) != '') { echo $theme_options->get( 'add_to_compare_text', $config->get( 'config_language_id' ) ); } else { echo 'Сравнение'; } ?></a>
-			        </div>
+	            </div>
+-->
 
-			        <?php if ($minimum > 1) { ?>
+
+              <?php if ($minimum > 1) { ?>
 			        <div class="minimum"><?php echo $text_minimum; ?></div>
 			        <?php } ?>
 			      </div>
@@ -350,6 +353,30 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 					</div>
 				  <?php } ?>
 			     </div>
+
+           <div class="links clearfix">
+                      <!-- from http://bootsnipp.com/snippets/featured/animated-radios-amp-checkboxes-nojs -->
+                          <div class="col-sm-6">
+                             <div class="checkbox">
+                                 <label style="font-size: 1.5em">
+                                     <input type="checkbox" value="" onclick="wishlist.add('<?php echo $product_id; ?>');">
+                                     <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                     В избранное
+                                 </label>
+                             </div>
+                          </div>
+                          <div class="col-sm-6">
+                             <div class="checkbox">
+                                 <label style="font-size: 1.5em">
+                                     <input type="checkbox" value="" onclick="compare.add('<?php echo $product_id; ?>');">
+                                     <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                     В сравнение
+                                 </label>
+                             </div>
+                          </div>
+                      <!-- -------------------------------------->
+           </div>
+
 
 			     <div id="product">
 			      <?php $product_options_center = $modules->getModules('product_options_center'); ?>
