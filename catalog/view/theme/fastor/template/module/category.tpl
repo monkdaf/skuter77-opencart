@@ -7,7 +7,7 @@ if($this->registry->has('theme_options') == false) {
 $theme_options = $this->registry->get('theme_options'); ?>
 
 <div class="box box-with-categories <?php if($theme_options->get( 'category_box_style' ) == '3') { echo 'category-box-type-4 category-box-type-2'; } ?> <?php if($theme_options->get( 'category_box_style' ) == '2') { echo 'category-box-type-3 category-box-type-2'; } ?> <?php if($theme_options->get( 'category_box_style' ) == '1') { echo 'category-box-type-2'; } ?> box-no-advanced" style="padding-top: 0px !important;">
-  <!--noindex--><div class="box-heading"><?php echo $heading_title; ?></div><!--/noindex-->
+  <!--noindex--><div class="box-heading"><?php echo $heading_title.'<'.$category_id.'/'.$child_id.'/'.$subchild_id.'>'; ?></div><!--/noindex-->
   <div class="strip-line"></div>
   <div class="box-content box-category">
     <ul class="accordion" id="accordion-category">
@@ -24,13 +24,34 @@ $theme_options = $this->registry->get('theme_options'); ?>
         <?php if(!empty($categories_2)) { ?>
         <div id="category<?php echo $i; ?>" class="panel-collapse collapse <?php if ($category['category_id'] == $category_id) { echo 'in'; } ?>" style="clear:both">
         	<ul>
-		       <?php foreach ($categories_2 as $child) { ?>
+		       <?php $j = 0; foreach ($categories_2 as $child) {$j++; ?>
 		        <li>
 		         <?php if ($child['category_id'] == $child_id) { ?>
 		         <a href="<?php echo $child['href']; ?>" class="active"><?php echo $child['name']; ?></a>
 		         <?php } else { ?>
 		         <a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a>
 		         <?php } ?>
+
+						 <!-- <?php $categories_3 = $theme_options->getCategories($child['category_id']); ?>
+		         <?php if ($categories_3) { ?>
+		         <span class="head"><a style="float:right;padding-right:5px" class="accordion-toggle<?php if ($child['category_id'] != $child_id) { echo ' collapsed'; } ?>" data-toggle="collapse" data-parent="#accordion-category" href="#category<?php echo $i.$j; ?>"><span class="plus">+</span><span class="minus">-</span></a></span>
+		         <?php if(!empty($categories_3)) { ?>
+		         <div id="category<?php echo $i.$j; ?>" class="panel-collapse collapse <?php if ($child['category_id'] == $child_id) { echo 'in'; } ?>" style="clear:both">
+		         	<ul>
+		 		       <?php foreach ($child as $subchild) { ?>
+		 		        <li>
+		 		         <?php if ($subchild['category_id'] == $subchild_id) { ?>
+		 		         <a href="<?php echo $subchild['href']; ?>" class="active"><?php echo $subchild['name']; ?></a>
+		 		         <?php } else { ?>
+		 		         <a href="<?php echo $subchild['href']; ?>"><?php echo $subchild['name']; ?></a>
+		 		         <?php } ?>
+		 		        </li>
+		 		       <?php } ?>
+		 	        </ul>
+		         </div>
+		         <?php } ?>
+		         <?php } ?> -->
+
 		        </li>
 		       <?php } ?>
 	        </ul>

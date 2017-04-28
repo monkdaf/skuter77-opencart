@@ -23,6 +23,12 @@ class ControllerModuleCategory extends Controller {
 			$data['child_id'] = 0;
 		}
 
+		if (isset($parts[2])) {
+			$data['subchild_id'] = $parts[2];
+		} else {
+			$data['subchild_id'] = 0;
+		}
+
 		$this->load->model('catalog/category');
 
 		$this->load->model('catalog/product');
@@ -40,9 +46,24 @@ class ControllerModuleCategory extends Controller {
 				foreach($children as $child) {
 					$filter_data = array('filter_category_id' => $child['category_id'], 'filter_sub_category' => true);
 
+					$subchidren_data = array();
+					$subchidren = $this->model_catalog_category->getCategories($child['category_id']);
+
+					foreach($subchidren as $subchild) {
+						$filter_subchild_data = array('filter_category_id' => $subchild['category_id'], 'filter_sub_category' => true);
+
+						$subchildren_data[] = array(
+							'category_id' => $subchild['category_id'],
+							'name' => $subchild['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_subchild_data) . ')' : ''),
+							'href' => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'] . '_' . $subchild['category_id'])
+						);
+					}
+
+
 					$children_data[] = array(
 						'category_id' => $child['category_id'],
 						'name' => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+						'children' => $subchildren_data,
 						'href' => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])
 					);
 				}
@@ -60,6 +81,7 @@ class ControllerModuleCategory extends Controller {
 				'href'        => $this->url->link('product/category', 'path=' . $category['category_id'])
 			);
 		}
+
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/category.tpl')) {
 			return $this->load->view($this->config->get('config_template') . '/template/module/category.tpl', $data);
