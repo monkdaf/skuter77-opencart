@@ -24,7 +24,7 @@ $theme_options = $this->registry->get('theme_options'); ?>
         <?php if(!empty($categories_2)) { ?>
         <div id="category<?php echo $i; ?>" class="panel-collapse collapse <?php if ($category['category_id'] == $category_id) { echo 'in'; } ?>" style="clear:both">
         	<!-- <ul> -->
-        	<ul class="accordion" id="accordion-subcategory">
+        	<ul class="accordion" id="accordion-subcategory<?php echo $i; ?>">
 		       <?php $j = 0; foreach ($categories_2 as $child) {$j++; ?>
 		        <!-- <li> -->
 		        <li class="panel">
@@ -38,7 +38,7 @@ $theme_options = $this->registry->get('theme_options'); ?>
 						 <?php $categories_3 = $theme_options->getCategories($child['category_id']); ?>
 		         <?php if ($categories_3) { ?>
 		         <!-- <?php echo count($categories_3).$categories_3[0]['name']; ?> -->
-		         <span class="head"><a style="float:right;padding-right:5px" class="accordion-toggle<?php if ($child['category_id'] != $child_id) { echo ' collapsed'; } ?>" data-toggle="collapse" data-parent="#accordion-subcategory" href="#category<?php echo $i.$j; ?>"><span class="plus">+</span><span class="minus">-</span></a></span>
+		         <span class="head"><a style="float:right;padding-right:5px" class="accordion-toggle<?php if ($child['category_id'] != $child_id) { echo ' collapsed'; } ?>" data-toggle="collapse" data-parent="#accordion-subcategory<?php echo $i; ?>" href="#category<?php echo $i.$j; ?>"><span class="plus">+</span><span class="minus">-</span></a></span>
 		         <?php if(!empty($categories_3)) { ?>
 		         <div id="category<?php echo $i.$j; ?>" class="panel-collapse collapse <?php if ($child['category_id'] == $child_id) { echo 'in'; } ?>" style="clear:both">
 		         	<ul>
