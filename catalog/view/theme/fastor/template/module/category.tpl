@@ -32,13 +32,15 @@ $theme_options = $this->registry->get('theme_options'); ?>
 		         <a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a>
 		         <?php } ?>
 
-						 <!-- <?php $categories_3 = $theme_options->getCategories($child['category_id']); ?>
+
+						 <?php $categories_3 = $theme_options->getCategories($child['category_id']); ?>
 		         <?php if ($categories_3) { ?>
+		         <!-- <?php echo count($categories_3).$categories_3[0]['name']; ?> -->
 		         <span class="head"><a style="float:right;padding-right:5px" class="accordion-toggle<?php if ($child['category_id'] != $child_id) { echo ' collapsed'; } ?>" data-toggle="collapse" data-parent="#accordion-category" href="#category<?php echo $i.$j; ?>"><span class="plus">+</span><span class="minus">-</span></a></span>
 		         <?php if(!empty($categories_3)) { ?>
 		         <div id="category<?php echo $i.$j; ?>" class="panel-collapse collapse <?php if ($child['category_id'] == $child_id) { echo 'in'; } ?>" style="clear:both">
 		         	<ul>
-		 		       <?php foreach ($child as $subchild) { ?>
+		 		       <?php foreach ($categories_3 as $subchild) { ?>
 		 		        <li>
 		 		         <?php if ($subchild['category_id'] == $subchild_id) { ?>
 		 		         <a href="<?php echo $subchild['href']; ?>" class="active"><?php echo $subchild['name']; ?></a>
@@ -50,7 +52,8 @@ $theme_options = $this->registry->get('theme_options'); ?>
 		 	        </ul>
 		         </div>
 		         <?php } ?>
-		         <?php } ?> -->
+		         <?php } ?>
+
 
 		        </li>
 		       <?php } ?>

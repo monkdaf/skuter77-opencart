@@ -29,6 +29,10 @@ class ControllerModuleCategory extends Controller {
 			$data['subchild_id'] = 0;
 		}
 
+		// $this->log->debug('$data["category_id"]=', $data['category_id']);
+		// $this->log->debug('$data["child_id"]=', $data['child_id']);
+		// $this->log->debug('$data["subchild_id"]=', $data['subchild_id']);
+
 		$this->load->model('catalog/category');
 
 		$this->load->model('catalog/product');
@@ -43,20 +47,24 @@ class ControllerModuleCategory extends Controller {
 			if ($category['category_id'] == $data['category_id']) {
 				$children = $this->model_catalog_category->getCategories($category['category_id']);
 
+// $this->log->debug('$data["category_id"]=', $data['category_id']);
+
 				foreach($children as $child) {
 					$filter_data = array('filter_category_id' => $child['category_id'], 'filter_sub_category' => true);
-
+// $this->log->debug('$filter_data(child)=', $filter_data);
 					$subchidren_data = array();
+// $this->log->debug('$subchildren_data1=', $subchildren_data);
 					$subchidren = $this->model_catalog_category->getCategories($child['category_id']);
 
 					foreach($subchidren as $subchild) {
 						$filter_subchild_data = array('filter_category_id' => $subchild['category_id'], 'filter_sub_category' => true);
-
+// $this->log->debug('$filter_subchild_data=', $filter_subchild_data);
 						$subchildren_data[] = array(
 							'category_id' => $subchild['category_id'],
 							'name' => $subchild['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_subchild_data) . ')' : ''),
 							'href' => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'] . '_' . $subchild['category_id'])
 						);
+// $this->log->debug('$subchildren_data2=', $subchildren_data);
 					}
 
 
@@ -66,6 +74,8 @@ class ControllerModuleCategory extends Controller {
 						'children' => $subchildren_data,
 						'href' => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])
 					);
+// $this->log->resetDebug();
+// $this->log->debug('$children_data=', $children_data);
 				}
 			}
 
@@ -80,6 +90,9 @@ class ControllerModuleCategory extends Controller {
 				'children'    => $children_data,
 				'href'        => $this->url->link('product/category', 'path=' . $category['category_id'])
 			);
+// $this->log->resetDebug();
+// $this->log->debug('$data[categories]=', $data['categories']);
+
 		}
 
 
