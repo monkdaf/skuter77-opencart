@@ -126,11 +126,11 @@ $modules = new Modules($this->registry);
 	?>
 
 	<?php $lista_plikow = array(
-			'catalog/view/theme/'.$config->get( 'config_template' ).'/css/bootstrap.css',
+			'catalog/view/theme/'.$config->get( 'config_template' ).'/css/bootstrap-min.css',
 			'catalog/view/theme/'.$config->get( 'config_template' ).'/css/animate.css',
-			'catalog/view/theme/'.$config->get( 'config_template' ).'/css/stylesheet.css',
-			'catalog/view/theme/'.$config->get( 'config_template' ).'/css/responsive.css',
-			'catalog/view/theme/'.$config->get( 'config_template' ).'/css/menu.css',
+			'catalog/view/theme/'.$config->get( 'config_template' ).'/css/stylesheet-min.css',
+			'catalog/view/theme/'.$config->get( 'config_template' ).'/css/responsive-min.css',
+			'catalog/view/theme/'.$config->get( 'config_template' ).'/css/menu-min.css',
 			'catalog/view/theme/'.$config->get( 'config_template' ).'/css/owl.carousel.css',
 			'catalog/view/theme/'.$config->get( 'config_template' ).'/css/font-awesome.min.css'
 	);
