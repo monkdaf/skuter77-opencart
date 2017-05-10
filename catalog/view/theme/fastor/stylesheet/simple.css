@@ -94,7 +94,8 @@
     margin-bottom: 20px;
 }
 .simplecheckout-block-content {
-    padding: 10px;
+    /*padding: 10px;*/
+    padding: 0px;
 }
 .simplecheckout-block-content:after {
     content:"";
@@ -244,7 +245,8 @@
     border-left: 1px solid #DDDDDD;
 }
 .simplecheckout-cart-total {
-    padding: 7px 3px;
+    /*padding: 7px 3px;*/
+    padding: 3px;
     border-right: 1px solid #DDDDDD;
     border-bottom: 1px solid #DDDDDD;
     border-left: 1px solid #DDDDDD;
@@ -305,7 +307,7 @@
     width: 7px;
 }
 .simplecheckout-cart th {
-    padding: 8px;
+    /*padding: 8px;*/
     border-bottom: 1px solid #DDDDDD;
     background-color: #F8F8F8;
     color: #4D4D4D;
