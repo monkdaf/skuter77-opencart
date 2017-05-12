@@ -170,7 +170,7 @@ include $simple_header;
             <?php if (!$block_order) { ?>
                 <div class="simplecheckout-button-block buttons" id="buttons">
                     <div class="simplecheckout-button-right">
-                        <?php if ($display_agreement_checkbox) { ?><span id="agreement_checkbox"><label><input type="checkbox" name="agreement" value="1" <?php if ($agreement == 1) { ?>checked="checked"<?php } ?> /><?php echo $text_agreement; ?></label>&nbsp;</span><?php } ?>
+                        <?php if ($display_agreement_checkbox) { ?><span id="agreement_checkbox"><label><input type="checkbox" name="agreement" value="1" <?php if ($agreement == 1) { ?>checked="checked"<?php } ?> /><?php echo $text_agreement; ?> и <a class="colorbox fancybox agree" href="http://skuter77.ru/index.php?route=information/information/agree&information_id=23" alt="Политика конфиденциальности"><b>Политика конфиденциальности</b></a></label>&nbsp;</span><?php } ?>
                         <?php if ($steps_count > 1) { ?>
                         <a class="button btn-primary button_oc btn" data-onclick="nextStep" id="simplecheckout_button_next"><span><?php echo $button_next; ?></span></a>
                         <?php } ?>

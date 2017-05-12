@@ -14,9 +14,10 @@
 						<div class="container">
 							<!-- Links -->
 							<ul class="menu">
+								<li><a href="/o-nas/">О компании</a></li>
 								<li><a href="/compare-products/">Сравнение товаров</a></li>
 								<li><a href="/stati/">Статьи на заметку</a></li>
-								<li><a href="#">Гарантии и сервис</a></li>
+								<li><a href="/garantii/">Гарантии и сервис</a></li>
 								<li><a href="/delivery/">Доставка и оплата</a></li>
 								<li><a href="/contact-us/">Контакты</a></li>
 							</ul>
