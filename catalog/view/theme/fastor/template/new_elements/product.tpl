@@ -123,7 +123,7 @@ $config = $this->registry->get('config');
 		      	if(is_array($enquiry)) { ?>
 		        	<li><a href="javascript:openPopup('<?php echo $enquiry['popup_module']; ?>', '<?php echo $product['product_id']; ?>')" data-toggle="tooltip" data-original-title="<?php echo $enquiry['block_name']; ?>"><i class="fa fa-question"></i></a></li>
 		        <?php } else { ?>
-		          <li><button type="button" data-toggle="tooltip" title="Быстрый заказ" class= "callme" data-product_id = <?php echo $product['product_id']; ?>><i class="fa fa-shopping-cart"></i></button><a onclick="cart.add('<?php echo $product['product_id']; ?>');" data-toggle="tooltip" data-original-title="<?php echo $button_cart; ?>"><i class="fa fa-shopping-cart"></i></a></li>
+		          <li><button type="button"  onclick="yaCounter35209050.reachGoal('quickorder'); return true;" data-toggle="tooltip" title="Быстрый заказ" class= "callme" data-product_id = <?php echo $product['product_id']; ?>><i class="fa fa-shopping-cart"></i></button><a onclick="cart.add('<?php echo $product['product_id']; ?>');" data-toggle="tooltip" data-original-title="<?php echo $button_cart; ?>"><i class="fa fa-shopping-cart"></i></a></li>
 		        <?php } ?>
         <?php } ?>
 

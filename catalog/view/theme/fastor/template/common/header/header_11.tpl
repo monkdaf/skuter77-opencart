@@ -113,7 +113,7 @@
 										<p style="margin: 0;font-size: 14px;color: #000;font-weight: 500;">
 											 <?php echo $telephone; ?>
 										</p>
-									 	<a href="#" class="callme btn btn-info btn-xs" role="button">Заказать звонок</a>
+									 	<a href="#" class="callme btn btn-info btn-xs" role="button" onclick="yaCounter35209050.reachGoal('callme'); return true;">Заказать звонок!</a>
 								 </div>
 									 <!-- <div>
 										 <a href="<?php echo $account; ?>" class="my-account"><i class="fa fa-user"></i></a> -->
