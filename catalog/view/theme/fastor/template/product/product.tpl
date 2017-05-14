@@ -358,7 +358,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
                       <!-- from http://bootsnipp.com/snippets/featured/animated-radios-amp-checkboxes-nojs -->
                           <div class="col-sm-6">
                              <div class="checkbox">
-                                 <label style="font-size: 1.5em">
+                                 <label style="font-size: 1.1em">
                                      <input type="checkbox" value="" onclick="wishlist.add('<?php echo $product_id; ?>');">
                                      <span class="cr"><i class="cr-icon fa fa-check"></i></span>
                                      В избранное
@@ -367,7 +367,7 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
                           </div>
                           <div class="col-sm-6">
                              <div class="checkbox">
-                                 <label style="font-size: 1.5em">
+                                 <label style="font-size: 1.1em">
                                      <input type="checkbox" value="" onclick="compare.add('<?php echo $product_id; ?>');">
                                      <span class="cr"><i class="cr-icon fa fa-check"></i></span>
                                      В сравнение
@@ -719,9 +719,11 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
   		if($tab['content'] == 'review') { $id = 'tab-review'; }
   		echo '<a href="#'.$id.'">'.$tab['heading'].'</a>';
   	} ?>
+<!--
 	<a href="#tab-video">Видеообзор</a>
 	<a href="#tab-dostavka">Доставка и оплата</a>
 	<a href="#tab-garantia">Гарантии</a>
+-->
   </div>
   <?php $i = 0; foreach($tabs as $tab) { $i++;
   	$id = 'tab_'.$i;
@@ -730,11 +732,13 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
   	}
   } ?>
   <div id="tab-description" class="tab-content" itemprop="description"><?php echo $description; ?></div>
+<!--
   <div id="tab-video" class="tab-content" itemprop="video">
 	  <iframe width="100%" height="650" src="https://www.youtube.com/embed/tg4rAAGYpxI" frameborder="0" allowfullscreen></iframe>
 	  </div>
   <div id="tab-dostavka" class="tab-content" itemprop="dostavka"><p>Доставка</p></div>
   <div id="tab-garantia" class="tab-content" itemprop="garantia"><p>Гарантия</p></div>
+-->
   <?php if ($attribute_groups) { ?>
   <div id="tab-attribute" class="tab-content">
     <table class="attribute" cellspacing="0">
