@@ -1,39 +1,83 @@
-<?php echo $header; 
+<?php echo $header;
 $theme_options = $this->registry->get('theme_options');
-$config = $this->registry->get('config'); 
+$config = $this->registry->get('config');
 include('catalog/view/theme/'.$config->get('config_template').'/template/new_elements/wrapper_top.tpl'); ?>
 
-<?php if ($categories) { ?>
-<p><b><?php echo $text_index; ?></b>
-  <?php foreach ($categories as $category) { ?>
-  &nbsp;&nbsp;&nbsp;<a href="index.php?route=product/manufacturer#<?php echo $category['name']; ?>"><b><?php echo $category['name']; ?></b></a>
-  <?php } ?>
-</p>
-<?php foreach ($categories as $category) { ?>
-<div class="manufacturer-list">
-  <div class="manufacturer-heading"><?php echo $category['name']; ?><a id="<?php echo $category['name']; ?>"></a></div>
-  <div class="manufacturer-content">
-    <?php if ($category['manufacturer']) { ?>
-    <?php for ($i = 0; $i < count($category['manufacturer']);) { ?>
-    <ul>
-      <?php $j = $i + ceil(count($category['manufacturer']) / 4); ?>
-      <?php for (; $i < $j; $i++) { ?>
-      <?php if (isset($category['manufacturer'][$i])) { ?>
-      <li><a href="<?php echo $category['manufacturer'][$i]['href']; ?>"><?php echo $category['manufacturer'][$i]['name']; ?></a></li>
-      <?php } ?>
-      <?php } ?>
-    </ul>
-    <?php } ?>
-    <?php } ?>
-  </div>
+<div class="col-sm-4">
+  <h3>
+    <a href="/giroskutery/">Гироскутеры</a>
+  </h3>
+  <ul>
+    <li>
+      <a href="/hoverbot/">Hoverbot</a>
+    </li>
+    <li>
+      <a href="/smart-balance/">Smart Balance</a>
+    </li>
+    <li>
+      <a href="/kiwano/">Kiwano</a>
+    </li>
+    <li>
+      <a href="/chic/">Chic</a>
+    </li>
+    <li>
+      <a href="/razor/">Razor</a>
+    </li>
+    <li>
+      <a href="/wmotion-logo/">Wmotion</a>
+    </li>
+  </ul>
 </div>
-<?php } ?>
-<?php } else { ?>
-<p><?php echo $text_empty; ?></p>
-<!--<div class="buttons clearfix">
-  <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
-</div>-->
-<?php } ?>
+<div class="col-sm-4">
+  <h3>
+    <a href="/monokoleso/">Моноколесо</a>
+  </h3>
+  <ul>
+    <li>
+      <a href="/hoverbot/">Hoverbot</a>
+    </li>
+    <li>
+      <a href="/airwheel/">Airwheel</a>
+    </li>
+    <li>
+      <a href="/inmotion/">Inmotion</a>
+    </li>
+    <li>
+      <a href="/ips/">IPS</a>
+    </li>
+    <li>
+      <a href="/ecodrift/">Ecodrift</a>
+    </li>
+    <li>
+      <a href="/firewheel/">FireWheel</a>
+    </li>
+    <li>
+      <a href="/wmotion-logo/">Wmotion</a>
+    </li>
+    <li>
+      <a href="/ninebot/">Ninebot</a>
+    </li>
+  </ul>
+</div>
+<div class="col-sm-4">
+  <h3>
+    <a href="/sigvei/">Сигвеи</a>
+  </h3>
+  <ul>
+    <li>
+      <a href="/hoverbot/">Hoverbot</a>
+    </li>
+    <li>
+      <a href="/airwheel/">Airwheel</a>
+    </li>
+    <li>
+      <a href="/inmotion/">Inmotion</a>
+    </li>
+    <li>
+      <a href="/ninebot/">Ninebot</a>
+    </li>
+  </ul>
+</div>
 
 <?php include('catalog/view/theme/'.$config->get('config_template').'/template/new_elements/wrapper_bottom.tpl'); ?>
 <?php echo $footer; ?>
