@@ -2,10 +2,12 @@
 $theme_options = $this->registry->get('theme_options');
 $config = $this->registry->get('config');
 include('catalog/view/theme/'.$config->get('config_template').'/template/new_elements/wrapper_top.tpl'); ?>
-
+<h2 class="col-sm-10" style="text-align: center">Бренды</h2>
 <div class="col-sm-4">
   <h3>
-    <a href="/giroskutery/">Гироскутеры</a>
+    <small>
+      <a href="/giroskutery/">Гироскутеры</a>
+    </small>
   </h3>
   <ul>
     <li>
@@ -30,7 +32,9 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 </div>
 <div class="col-sm-4">
   <h3>
-    <a href="/monokoleso/">Моноколесо</a>
+    <small>
+      <a href="/monokoleso/">Моноколесо</a>
+    </small>
   </h3>
   <ul>
     <li>
@@ -61,7 +65,9 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 </div>
 <div class="col-sm-4">
   <h3>
-    <a href="/sigvei/">Сигвеи</a>
+    <small>
+      <a href="/sigvei/">Сигвеи</a>
+    </small>
   </h3>
   <ul>
     <li>
