@@ -62,6 +62,7 @@
 
 									 <!-- Search -->
 									 <div class="search_form" style="display:inline-block;max-width:120px;margin-top:10px;">
+									 <!-- <div class="search_form col-12 col-md-1" style="display:inline-block;max-width:120px;margin-top:10px;"> -->
 									  <div class="button-search"></div>
 									  <input type="text" class="input-block-level search-query" style="height:57px;" name="search" placeholder="<?php echo str_replace('...', '', $search); ?>" id="search_query" value="" />
 
@@ -110,13 +111,21 @@
 									 	 </script>
 									  <?php } ?>
 									 </div>
-									 <div  style="display:inline-block;">
+									 <div style="display:inline-block;">
 										<p style="margin: 0;font-size: 14px;color: #000;font-weight: 500;">
 											 <?php echo $telephone; ?>
 										</p>
 									 	<a href="#" class="callme btn btn-info btn-xs" role="button" onclick="yaCounter35209050.reachGoal('callme'); return true;">Заказать звонок!</a>
+
 								 </div>
-									 <!-- <div>
+								 <!-- cart for little screen -->
+								<!-- <div class="pull-right visible-sm visible-xs"> -->
+								<div class="visible-sm visible-xs">
+								<a href="<?php echo $account; ?>" class="my-account"><i class="fa fa-user"></i></a>
+								<?php echo $cart; ?>
+							 </div>
+
+								 									 <!-- <div>
 										 <a href="<?php echo $account; ?>" class="my-account"><i class="fa fa-user"></i></a> -->
 										<?php // echo $cart; ?>
 									<!-- </div> -->

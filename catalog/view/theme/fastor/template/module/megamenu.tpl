@@ -276,10 +276,12 @@ $id = rand(0, 5000)*rand(5000, 50000); ?>
 </div>
 
 <!-- cart for little screen -->
+<!--
 <div class="pull-right visible-sm visible-xs">
 	<a href="<?php echo $account; ?>" class="my-account"><i class="fa fa-user"></i></a>
-	<?php echo $cart; ?>
+	<?php //echo $cart; ?>
 </div>
+-->
 
 <script type="text/javascript">
   $(window).load(function(){
