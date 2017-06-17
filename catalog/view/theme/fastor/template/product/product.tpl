@@ -751,8 +751,8 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
       <tbody>
         <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
         <tr>
-          <td><?php echo $attribute['name']; ?></td>
-          <td><?php echo $attribute['text']; ?></td>
+          <td style="padding: 2px 10px 2px"><?php echo $attribute['name']; ?></td>
+          <td style="padding: 2px 10px 2px"><?php echo $attribute['text']; ?></td>
         </tr>
         <?php } ?>
       </tbody>
