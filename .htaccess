@@ -84,7 +84,9 @@ BrowserMatch ^Mozilla/4\.0[678] no-gzip
 BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
 Header append Vary User-Agent
 
-
+#Session timeout
+php_value session.cookie_lifetime 604800
+php_value session.gc_maxlifetime 604800
 
 
 
