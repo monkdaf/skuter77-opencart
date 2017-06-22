@@ -202,17 +202,23 @@ if($this->registry->has('theme_options') == true) {
 			<div class="shadow"></div>
 			<div class="pattern">
 				<div class="container">
-				        <div class="container">
-				        <div class="footer-my-menu">
-<a href="/giroskutery/">Гироскутеры</a>
-<a style="margin-left:20px;" href="/samokaty/">Самокаты</a>
-<a style="margin-left:20px;" href="/monokoleso/">Моноколесо</a>
-<a style="margin-left:20px;" href="/elektrosamokaty/">Электросамокаты</a>
-<a style="margin-left:20px;" href="/sigvei/">Сигвеи</a>
-<a style="margin-left:20px;" href="/stati">Статьи</a>
-			</div>
-
-
+<!--
+				  <div class="container">
+				  	<div class="footer-my-menu col-sm-10">
+							<a href="/giroskutery/">Гироскутеры</a>
+							<a style="margin-left:20px;" href="/samokaty/">Самокаты</a>
+							<a style="margin-left:20px;" href="/monokoleso/">Моноколесо</a>
+							<a style="margin-left:20px;" href="/elektrosamokaty/">Электросамокаты</a>
+							<a style="margin-left:20px;" href="/sigvei/">Сигвеи</a>
+							<a style="margin-left:20px;" href="/stati">Статьи</a>
+						</div>
+						<div class="col-sm-2" style="text-align:right;">
+							<a class="fa fa-youtube-square fa-2x" aria-hidden="true" href="https://www.youtube.com/channel/UCMzu9lB3vyKBApebpg6EEHw"></a>
+							<a class="fa fa-google-plus-square fa-2x" aria-hidden="true" href="https://plus.google.com/104980552523406767560?hl=ru"></a>
+							<a class="fa fa-facebook-square fa-2x" aria-hidden="true" href="https://www.facebook.com/skuter77.ru/"></a>
+						  <a class="fa fa-instagram fa-2x" aria-hidden="true" href="https://www.instagram.com/skuter77.ru/"></a>
+						</div>
+-->
 					<?php
 					if( count($footer_center) ) {
 						foreach ($footer_center as $module) {
