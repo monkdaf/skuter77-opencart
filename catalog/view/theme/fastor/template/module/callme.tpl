@@ -26,7 +26,7 @@
 $(document).ready(function() {
 	$('.callme').on('click', function() {
 		var product_id = ($(this).data("product_id") > 0) ? $(this).data("product_id") : '';
-		$('.callme_load').html('<iframe src="./index.php?route=module/callme/open&prod_id='+ product_id +'" width="340" height="'+<?php echo $callme_setting['height']; ?>+'" frameborder="0">Загрузка</iframe>');
+		$('.callme_load').html('<iframe src="./index.php?route=module/callme/open&prod_id='+ product_id +'" width="300" height="'+<?php echo $callme_setting['height'] - 100; ?>+'" frameborder="0">Загрузка</iframe>');
 			$('#callme_modal').modal('show');
 	});
 });
@@ -43,7 +43,7 @@ $(document).ready(function() {
 <meta charset="UTF-8" />
 <base href="<?php echo $base; ?>" />
  <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
- 
+
 <style type="text/css">
  body  {text-align: center; overflow:hidden;}
  #wrap{}
@@ -65,11 +65,11 @@ button:hover {background:#3C963B   !important; color:#fff !important;}
 </head>
 
 <body id="callme">
-<div id="wrap"> 
+<div id="wrap">
 
 	<h3><?php echo $heading_title; ?></h3>
-	  
-	  
+
+
 	<form class="form-horizontal" role="form" action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" >
 
 		<div class="form-group <?php echo ($error_name) ? 'has-error' :''; ?>" >
@@ -78,15 +78,15 @@ button:hover {background:#3C963B   !important; color:#fff !important;}
 				<input type="text" class="form-control" id="name" name="name"  value="<?php echo $name; ?>" placeholder="<?php echo ($error_name) ? $error_name : $entry_name; ?>">
 			</div>
 		</div>
-		 
+
 		<div class="form-group <?php echo ($error_tel) ? 'has-error ' :''; ?>" >
 			<label for="tel" class="col-sm-2 control-label"><?php echo $entry_tel; ?></label>
 			<div class="col-sm-10">
 				<input type="tel" class="form-control" id="tel" name="tel"  value="<?php echo $tel; ?>" placeholder="<?php echo ($error_tel) ? $error_tel : $entry_tel; ?>">
 			</div>
 		</div>
-		  
-		<?php if ($callme_setting['showfieldtime']) { ?>
+
+	<!--	<?php if ($callme_setting['showfieldtime']) { ?>
 		<div class="form-group" >
 			<label for="time" class="col-sm-2 control-label"><?php echo $entry_time; ?></label>
 			<div>
@@ -99,28 +99,28 @@ button:hover {background:#3C963B   !important; color:#fff !important;}
 				</div>
 			</div>
 		</div>
-		<?php } ?>
-		 
+  	<?php } ?>
+-->
 		<div class="form-group" >
 			<label for="enquiry" class="col-sm-2 control-label"><?php echo $entry_enquiry; ?></label>
 			<div class="col-sm-10">
 				<textarea class="form-control" rows="3" id="enquiry" name="enquiry"  value="<?php echo $enquiry; ?>" > </textarea>
 			</div>
 		</div>
-		  
+
 		<input type="hidden" name="link_page" value="<?php echo ($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : ''; ?>" />
 		<BR>
 		<input type="text" class="gdehomos" name="gdehomos" value="<?php echo $gdehomos; ?>" />
-		
+
 		<?php if ($product_id) { ?>
 		<input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
 		<?php } ?>
-		
+
 
 		<?php if (isset($success)) { ?>
 		<p class="bg-success"><?php echo $success; ?></p>
 		<?php } else { ?>
-			 
+
 		<?php if ($callme_setting['capcha']) { ?>
 		<div class="form-group <?php echo ($error_capcha) ? 'has-error ' :''; ?> ">
 
@@ -136,7 +136,7 @@ button:hover {background:#3C963B   !important; color:#fff !important;}
 			</div>
 		</div>
 		<BR>
-		<?php } ?>	
+		<?php } ?>
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" class="btn btn-default"><?php echo $button_send; ?></button>
