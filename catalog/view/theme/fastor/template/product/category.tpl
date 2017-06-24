@@ -200,7 +200,7 @@ $part = explode("|||", $desc);
   			</div>
 
   			<div class="desc col-sm-5">
-  				<!--noindex--><div class="description"><h2>daf</h2><?php echo $product['description']; ?></div><!--/noindex-->
+  				<!--noindex--><div class="description"><?php echo $product['description']; ?></div><!--/noindex-->
   			</div>
   		</div>
   	</div>
