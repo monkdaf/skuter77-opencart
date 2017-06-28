@@ -6,26 +6,30 @@ $product_page = true;
 include('catalog/view/theme/'.$config->get('config_template').'/template/new_elements/wrapper_top.tpl');
 ?>
 
-<!-- <div class="container">
+
+
+ <div class="container">
   <div class="clearfix">
   <div class="row">
-    <div class="col-md-12">
-             <h2 id="title-page"><?php echo $heading_title; ?>
+    <div class="col-md-12 bread-prod">
+             <h2 style="text-align:center;"><?php echo $heading_title; ?>
               <?php if(isset($weight)) { if ($weight) { ?>
               &nbsp;(<?php echo $weight; ?>)
               <?php } } ?>
             </h2>
 
-             <ul class="breadcrumb">
-             	<?php foreach ($breadcrumbs as $i=> $breadcrumb) { ?>
-             	<?php if($i+1<count($breadcrumbs)) { ?>
-             	<li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li><?php } else { ?><li><?php echo $breadcrumb['text']; ?></li><?php } ?>
-                 <?php } ?>
-              </ul>
+            <ul>
+             <?php foreach ($breadcrumbs as $i=> $breadcrumb) { ?>
+             <?php if($i+1<count($breadcrumbs)) { ?>
+             <li style="display: inline-block;"><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?> &#8674;</a></li><?php } else { ?><li style="display: inline-block;"><?php echo $breadcrumb['text']; ?></li><?php } ?>
+                <?php } ?>
+             </ul>
+
+
     </div>
     </div>
   </div>
-</div> -->
+</div>
 
 <div itemscope itemtype="http://data-vocabulary.org/Product">
   <span itemprop="name" class="hidden"><?php echo $heading_title; ?></span>
@@ -1176,4 +1180,19 @@ echo '<script type="text/javascript" src="catalog/view/theme/' . $config->get( '
 } ?>
 
 <?php include('catalog/view/theme/'.$config->get('config_template').'/template/new_elements/wrapper_bottom.tpl'); ?>
+
+<!-- begin uptolike -->
+<script type="text/javascript">(function(w,doc) {
+if (!w.__utlWdgt ) {
+    w.__utlWdgt = true;
+    var d = doc, s = d.createElement('script'), g = 'getElementsByTagName';
+    s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+    s.src = ('https:' == w.location.protocol ? 'https' : 'http')  + '://w.uptolike.com/widgets/v1/uptolike.js';
+    var h=d[g]('body')[0];
+    h.appendChild(s);
+}})(window,document);
+</script>
+<div data-background-alpha="0.0" data-buttons-color="#FFFFFF" data-counter-background-color="#ffffff" data-share-counter-size="12" data-top-button="false" data-share-counter-type="disable" data-share-style="1" data-mode="share" data-like-text-enable="false" data-hover-effect="scale" data-mobile-view="true" data-icon-color="#ffffff" data-follow-text="Будь в курсе новинок и акций!" data-orientation="fixed-left" data-text-color="#000000" data-share-shape="rectangle" data-sn-ids="fb.vk.tw.ok.gp.ps." data-share-size="30" data-background-color="#ffffff" data-preview-mobile="false" data-mobile-sn-ids="fb.vk.tw.wh.ok.vb." data-pid="1676058" data-counter-background-alpha="1.0" data-follow-in="https://www.instagram.com/skuter77.ru/" data-follow-gp="104980552523406767560?hl=ru" data-following-enable="true" data-exclude-show-more="false" data-follow-yt="https://www.youtube.com/channel/UCMzu9lB3vyKBApebpg6EEHw" data-selection-enable="true" data-follow-fb="skuter77.ru/" class="uptolike-buttons" ></div>
+<!-- end uptolike -->
+
 <?php echo $footer; ?>
