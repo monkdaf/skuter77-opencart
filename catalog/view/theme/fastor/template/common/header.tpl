@@ -229,16 +229,16 @@ $modules = new Modules($this->registry);
 
     <?php // Full screen background slider
     if($config->get( 'full_screen_background_slider_module' ) != '') { ?>
-        <script async type="text/javascript" src="catalog/view/theme/<?php echo $config->get( 'config_template' ); ?>/js/jquery.vegas.min.js"></script>
+        <script type="text/javascript" src="catalog/view/theme/<?php echo $config->get( 'config_template' ); ?>/js/jquery.vegas.min.js"></script>
     <?php } ?>
 
-    <script async type="text/javascript" src="catalog/view/theme/<?php echo $config->get( 'config_template' ); ?>/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="catalog/view/theme/<?php echo $config->get( 'config_template' ); ?>/js/owl.carousel.min.js"></script>
 
     <?php if($theme_options->get( 'quick_search_autosuggest' ) != '0') { ?>
-    	<script async type="text/javascript" src="catalog/view/theme/<?php echo $config->get( 'config_template' ); ?>/js/jquery-ui-1.10.4.custom.min.js"></script>
+    	<script type="text/javascript" src="catalog/view/theme/<?php echo $config->get( 'config_template' ); ?>/js/jquery-ui-1.10.4.custom.min.js"></script>
     <?php } ?>
 
-    <script async type="text/javascript" src="catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
 
 	<script type="text/javascript">
 		var responsive_design = '<?php if($theme_options->get( 'responsive_design' ) == '0') { echo 'no'; } else { echo 'yes'; } ?>';
@@ -246,7 +246,7 @@ $modules = new Modules($this->registry);
 
 	<?php foreach ($scripts as $script) { ?>
 		<?php if($script != 'catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js') { ?>
-			<script async type="text/javascript" src="<?php echo $script; ?>"></script>
+			<script type="text/javascript" src="<?php echo $script; ?>"></script>
 		<?php } ?>
 		<?php if(strpos($script, "mega_filter.js") == true) { ?>
 			<script type="text/javascript">
@@ -275,7 +275,7 @@ $modules = new Modules($this->registry);
 	<?php } ?>
 
 	<?php if($theme_options->get( 'custom_code_javascript_status' ) == 1) { ?>
-		<script async type="text/javascript" src="catalog/view/theme/<?php echo $config->get( 'config_template' ); ?>/skins/store_<?php echo $theme_options->get( 'store' ); ?>/<?php echo $theme_options->get( 'skin' ); ?>/js/custom_code.js"></script>
+		<script type="text/javascript" src="catalog/view/theme/<?php echo $config->get( 'config_template' ); ?>/skins/store_<?php echo $theme_options->get( 'store' ); ?>/<?php echo $theme_options->get( 'skin' ); ?>/js/custom_code.js"></script>
 	<?php } ?>
 
 	<?php foreach ($analytics as $analytic) { ?>
