@@ -226,9 +226,9 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			        	     <?php } ?>
 			        <?php } ?>
 			        <?php if (!$special) { ?>
-			        <span class="price-new"><span itemprop="price" id="price-old"><?php echo $price; ?> <!-- <i class="fa fa-rub"></i> --></span></span>
+			        <span class="price-new"><span <?php if ( $quantity <= 0) { ?> class="text-muted" <?php } ?> itemprop="price" id="price-old"><?php echo $price; ?> <!-- <i class="fa fa-rub"></i> --></span></span>
 			        <?php } else { ?>
-			        <span class="price-new"><span itemprop="price" id="price-special"><?php echo $special; ?> <!-- <i class="fa fa-rub"></i> --></span></span> <span class="price-old" id="price-old"><?php echo $price; ?> <!-- <i class="fa fa-rub"></i> --></span>
+			        <span class="price-new"><span <?php if ( $quantity <= 0) { ?> class="text-muted" <?php } ?> itemprop="price" id="price-special"><?php echo $special; ?> <!-- <i class="fa fa-rub"></i> --></span></span> <span class="price-old" id="price-old"><?php echo $price; ?> <!-- <i class="fa fa-rub"></i> --></span>
 			        <?php } ?>
 			        <br />
 			        <?php if ($tax) { ?>
@@ -261,10 +261,14 @@ include('catalog/view/theme/'.$config->get('config_template').'/template/new_ele
 			          		echo $module;
 			          	}
 			          } else { ?>
+                <?php if ( $quantity > 0) { ?>
                  <div class="tovbut">
                     <input type="button" value="<?php echo $button_cart; ?>" id="button-cart" rel="<?php echo $product_id; ?>" data-loading-text="<?php echo $text_loading; ?>" class="button-blue" />
                     <input type="button" value="Купить в 1 клик" id="button-cart" rel="<?php echo $product_id; ?>" data-loading-text="<?php echo $text_loading; ?>" data-product_id = <?php echo $product_id; ?> class="callme button-fastbuy">
                   </div>
+                <?php } else { ?>
+                  <p class="text-center text-uppercase text-muted"><?php echo $stock; ?></p>
+                <?php } ?>
                 <!--  <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" /> -->
 
 <!--

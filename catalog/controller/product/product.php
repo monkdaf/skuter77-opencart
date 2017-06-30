@@ -157,7 +157,7 @@ class ControllerProductProduct extends Controller {
 		$this->load->model('catalog/product');
 
 		$product_info = $this->model_catalog_product->getProduct($product_id);
-		
+
 		if ($product_info) {
 			$url = '';
 
@@ -278,6 +278,8 @@ class ControllerProductProduct extends Controller {
 			} else {
 				$data['stock'] = $this->language->get('text_instock');
 			}
+
+			$data[quantity] = $product_info['quantity'];
 
 			$this->load->model('tool/image');
 
