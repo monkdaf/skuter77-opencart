@@ -81,7 +81,17 @@
     <tbody>
       <?php foreach ($products as $product) { ?>
       <tr>
-        <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;"><?php echo $product['name']; ?>
+        <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;">
+<!--          <img src="index.php?route=product/product&product_id=<?php echo $product['id']; ?>" alt="<?php echo $product['name']; ?>" width="50" height="50" />
+          <img src="index.php?route=product/product&product_id=<?php echo $product['id']; ?>" alt="<?php echo $product['name']; ?>" width="50" height="50" />
+          <a href="<?php echo $product['href']; ?>" title="<?php echo $product['name']; ?>"><img src="<?php echo $product['image_name']; ?>" alt="<?php echo $product['name']; ?>" width="50" height="50" /></a>
+          <p>ID=<?php echo $product['id']; ?></p>
+
+<?php if ($product['image']){?>
+  <img src="$product['image']" alt="$product['image']" width="50" height="50" />
+<?php } ?>
+-->
+          <?php echo $product['name']; ?>
           <?php foreach ($product['option'] as $option) { ?>
           <br />
           &nbsp;<small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>

@@ -562,9 +562,20 @@ class ModelCheckoutOrder extends Model {
 						);
 					}
 
+//					$product_image = $this->getProductImage($product['product_id']);
+//					$this->load->model('tool/image');
+
+//					if ($product_image) {
+//					   $product_image = $this->model_tool_resize($product_image, 50, 50);
+//					}
+
 					$data['products'][] = array(
 						'name'     => $product['name'],
 						'model'    => $product['model'],
+						//'image_name' => $product['image_name'],
+						//'href'		 => 'index.php?route=product/product&product_id=' . $product['product_id'],
+//						'id' => 257,
+//						'image' => $product_image,
 						'option'   => $option_data,
 						'quantity' => $product['quantity'],
 						'price'    => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $order_info['currency_code'], $order_info['currency_value']),
@@ -841,4 +852,15 @@ class ModelCheckoutOrder extends Model {
 
 		$this->event->trigger('post.order.history.add', $order_id);
 	}
+// get image of product
+// 	public function getProductImage($product_id){
+//     $query = $this->db->query("SELECT `image` FROM `".DB_PREFIX."product` WHERE product_id = '".(int)$product_id."'");
+//
+//     if ($query->row) {
+//         return $query->row['image'];
+//     } else {
+//         return false;
+//     }
+// }
+
 }
