@@ -39,7 +39,7 @@ class ControllerCommonSeoPro extends Controller {
 			unset($this->request->get['original_route']);
 		}
 
-	
+
 
 
 
@@ -112,6 +112,12 @@ class ControllerCommonSeoPro extends Controller {
 			} elseif (isset($this->request->get['information_id'])) {
 				$this->request->get['route'] = 'information/information';
 
+			// compatibility with fastor blog
+			} elseif (isset($this->request->get['article_id'])) {
+			$this->request->get['route'] = 'blog/article';
+			} elseif (isset($this->request->get['blog_path'])) {
+			$this->request->get['route'] = 'blog/blog';
+
 			// Compatibility with Shopencart News/Blog:
 			} elseif (isset($this->request->get['news_id'])) {
 				$this->request->get['route'] = 'news/article';
@@ -141,7 +147,7 @@ class ControllerCommonSeoPro extends Controller {
 	}
 
 	public function rewrite($link, $code = '') {
-		
+
 		if (!$this->config->get('config_seo_url')) return $link;
 
 		$seo_url = '';
@@ -246,6 +252,10 @@ class ControllerCommonSeoPro extends Controller {
 				case 'search':
 				case 'sub_category':
 				case 'description':
+
+				// compatibility with fastor blog
+				case 'article_id':
+				case 'blog_path':
 
 				// Compatibility with Shopencart News/Blog:
 				case 'news_id':

@@ -1,4 +1,4 @@
-<?php if(!empty($articles)):?> 
+<?php if(!empty($articles)):?>
     <?php $index = 1; ?>
     <?php foreach($articles as $article):?>
     <div class="post post-with-3-columns">
@@ -19,15 +19,15 @@
                     </div>
                 <?php endif; ?>
             <?php endif; ?>
-            
+
             <div class="tags">
                  <?php $s = 0; foreach($article['tags'] as $tag): ?>
                       <?php if($s < 2): ?><a href="<?php echo $tag['href']; ?>"><?php echo $tag['tag']; ?></a><?php endif; ?>
                  <?php $s++; endforeach; ?>
             </div>
-            
-            <div class="date-published"><?php echo date('d.m.Y', strtotime($article['date_published'])); ?></div>
-            
+
+<!--            <div class="date-published"><?php echo date('d.m.Y', strtotime($article['date_published'])); ?></div> -->
+
             <h2 class="post-title">
                  <a href="<?php echo $article['href'] ?>"><?php echo $article['title'] ?></a>
             </h2>
@@ -35,9 +35,9 @@
             <div class="post-description">
                 <?php echo $article['description']?>
             </div>
-            
+
             <a href="<?php echo $article['href'] ?>" class="button-more"><?php echo $button_read_more ?></a>
-        </div>       
+        </div>
     </div>
     <?php $index++; ?>
     <?php endforeach; ?>

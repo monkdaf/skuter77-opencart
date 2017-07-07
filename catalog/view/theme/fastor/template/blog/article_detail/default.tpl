@@ -1,4 +1,4 @@
-<?php echo $header; 
+<?php echo $header;
 ?>
 <?php if($settings['comments_engine'] == 'FACEBOOK'):?>
 <div id="fb-root"></div>
@@ -12,13 +12,14 @@
 <?php endif; ?>
 <?php
 $theme_options = $this->registry->get('theme_options');
-$config = $this->registry->get('config'); 
+$config = $this->registry->get('config');
 include('catalog/view/theme/' . $config->get('config_template') . '/template/new_elements/wrapper_top.tpl'); ?>
 
 <?php if(!empty($article)):?>
 <div class="post">
     <div class="post-entry">
-        <?php if(!empty($article['gallery'])):?>
+      <h2><?php echo $article['title'] ?></h2>
+<!--        <?php if(!empty($article['gallery'])):?>
             <?php if($article['article_list_gallery_display'] == 'CLASSIC'):?>
                 <div class="post-media">
                     <?php echo $article['gallery'][0]['output'] ?>
@@ -34,12 +35,12 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
                 </div>
             <?php endif; ?>
         <?php endif; ?>
-
+-->
         <div class="post-content">
             <?php echo $article['content']?>
         </div>
-        
-        <ul class="meta">
+
+<!--        <ul class="meta">
             <?php if($author):?>
                 <li><?php echo $text_posted_by ?> : <a href="<?php echo  $author['href']; ?>"><?php echo $author['name']; ?></a></li>
             <?php endif; ?>
@@ -68,7 +69,7 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
             <li><?php echo $text_comments?>: <?php echo $article['comments_count']?></li>
             <?php endif; ?>
         </ul>
-        
+-->
         <?php if ($tags): ?>
         <div class="tags">
             <?php for ($i = 0; $i < count($tags); $i++): ?>
@@ -93,32 +94,32 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
         </div>
         <?php endif; ?>
         <?php endif; ?>
-        
+
      <?php if(!empty($articles) && $settings['article_related_status'] == 1) : ?>
-     
+
          <?php
-         include('catalog/view/theme/' . $config->get('config_template') . '/template/blog/article_related/'. $settings['article_related_template']); 
+         include('catalog/view/theme/' . $config->get('config_template') . '/template/blog/article_related/'. $settings['article_related_template']);
          ?>
-        
-     
+
+
      <?php endif; ?>
-     
-     
+
+
      <?php if(!empty($products) && $settings['product_related_status'] == 1) : ?>
-       <?php 
-       $class = 3; 
-       $id = rand(0, 5000)*rand(0, 5000); 
-       $all = 4; 
-       $row = 4; 
-       
+       <?php
+       $class = 3;
+       $id = rand(0, 5000)*rand(0, 5000);
+       $all = 4;
+       $row = 4;
+
        if($settings['product_related_per_row'] == 6) { $class = 2; }
        if($settings['product_related_per_row'] == 5) { $class = 25; }
        if($settings['product_related_per_row'] == 3) { $class = 4; }
-       
+
        if($settings['product_related_per_row'] > 1) {
            $row = $settings['product_related_per_row'];
            $all = $settings['product_related_per_row'];
-           } 
+           }
        ?>
        <div class="box clearfix box-no-advanced box-with-products <?php if($settings['product_scroll_related'] == 1) { echo 'with-scroll'; } ?>">
          <?php if($settings['product_scroll_related'] == 1) : ?>
@@ -126,7 +127,7 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
          <a class="next" href="#myCarousel<?php echo $id; ?>" id="myCarousel<?php echo $id; ?>_next"><span></span></a>
          <a class="prev" href="#myCarousel<?php echo $id; ?>" id="myCarousel<?php echo $id; ?>_prev"><span></span></a>
          <?php endif; ?>
-       	
+
          <div class="box-heading"><?php echo $text_related_products; ?></div>
          <div class="clear"></div>
          <div class="box-content products related-products">
@@ -147,13 +148,13 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
            </div>
          </div>
        </div>
-   <?php endif; ?>   
-       
+   <?php endif; ?>
+
        <?php if($settings['product_scroll_related'] == 1): ?>
        <script type="text/javascript">
        $(document).ready(function() {
          var owl<?php echo $id; ?> = $(".box #myCarousel<?php echo $id; ?> .carousel-inner");
-       	
+
          $("#myCarousel<?php echo $id; ?>_next").click(function(){
              owl<?php echo $id; ?>.trigger('owl.next');
              return false;
@@ -162,7 +163,7 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
              owl<?php echo $id; ?>.trigger('owl.prev');
              return false;
          });
-           
+
          owl<?php echo $id; ?>.owlCarousel({
          	  slideSpeed : 500,
              singleItem:true
@@ -170,7 +171,7 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
        });
        </script>
        <?php endif ?>
-        
+
         <?php if($article['status_comments']): ?>
         <?php if($settings['comments_engine'] == 'LOCAL'):?>
 
@@ -185,18 +186,18 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
                                   <?php echo $comment['content']; ?>
                               </div>
                           <?php endforeach; ?>
-                      </div> 
+                      </div>
                       <?php else: ?>
                       <p><?php echo $text_no_comments ?></p>
                       <?php endif; ?>
                  </div>
             </div>
-            
+
             <div class="box box-no-advanced leave-reply" id="reply-block">
                  <div class="box-heading"><?php echo $text_leave_reply ?></div>
                  <div class="box-content">
                        <p style="padding-top: 5px"><?php echo $text_required_info ?><abbr class="required">*</abbr> </p>
-       
+
                        <form class="form-horizontal" method="post" id="form-comment">
                            <div class="form-group required">
                                <div class="col-xs-12 col-sm-6">
@@ -214,13 +215,13 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
                                    <textarea rows="10" id="input-content" name="content" class="form-control"></textarea>
                                </div>
                            </div>
-       
+
                            <div class="text-center">
                                 <button class="button button-large button-comment" id="button-comment" type="submit"><?php echo $button_post_comment ?></button>
                            </div>
                        </form>
                  </div>
-                 
+
             </div>
             <?php endif; ?>
             <?php if($settings['comments_engine'] == 'DISQUS'):?>
@@ -246,9 +247,9 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
         <?php endif; ?>
 
             </div>
-  
+
             <?php endif; ?>
-            
+
         </div>
 
 <script>
@@ -263,7 +264,7 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
             lazyLoad: true,
             navigationText: false
         })
-        
+
         $('#button-comment').on('click', function(e) {
             e.preventDefault();
             $.ajax({
@@ -296,7 +297,7 @@ include('catalog/view/theme/' . $config->get('config_template') . '/template/new
         });
     });
 </script>
-        
+
 </script>
 
 

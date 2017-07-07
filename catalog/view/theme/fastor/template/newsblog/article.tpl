@@ -1,10 +1,25 @@
 <?php echo $header; ?>
+<div class="standard-body">
+  <div class="full-width">
 <div class="container">
-  <ul class="breadcrumb">
+  <!-- <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
-  </ul>
+  </ul> -->
+  <div class="clearfix">
+  <div class="row">
+    <div class="col-md-12 bread-prod">
+      <ul>
+       <?php foreach ($breadcrumbs as $i=> $breadcrumb) { ?>
+       <?php if($i+1<count($breadcrumbs)) { ?>
+       <li style="display: inline-block;"><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?> &#8674;</a></li><?php } else { ?><li style="display: inline-block;"><?php echo $breadcrumb['text']; ?></li><?php } ?>
+          <?php } ?>
+      </ul>
+    </div>
+    </div>
+  </div>
+
   <div class="row"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
     <?php $class = 'col-sm-6'; ?>
@@ -15,36 +30,13 @@
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <div class="row">
-        <div class="col-sm-8">
-        	<h1><?php echo $heading_title; ?></h1>
+        <div class="col-sm-12">
+        	<h1 style="text-align:center;"><?php echo $heading_title; ?></h1>
           	<?php echo $preview;?>
 
           	<?php echo $description; ?>
         </div>
 
-        <div class="col-sm-4">
-        	<?php if ($thumb || $images) { ?>
-          	<ul class="thumbnails">
-	            <?php if ($thumb) { ?>
-	            <li><a class="thumbnail" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
-	            <?php } ?>
-	            <?php if ($images) { ?>
-	            <?php foreach ($images as $image) { ?>
-	            <li class="image-additional"><a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
-	            <?php } ?>
-	            <?php } ?>
-          	</ul>
-          	<?php } ?>
-
-          	<? if ($attributes) { ?>
-	      		<h5><?php echo $text_attributes;?></h5>
-	            <? foreach ($attributes as $attribute_group) { ?>
-	              	<? foreach ($attribute_group['attribute'] as $attribute_item) { ?>
-                   		<b><?php echo $attribute_item['name'];?>:</b> <?php echo $attribute_item['text'];?><br />
-	                <? } ?>
-	          	<? } ?>
-            <? } ?>
-        </div>
       </div>
 
   	  <?php if ($articles) { ?>
@@ -147,6 +139,8 @@
       <?php } ?>
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
+</div>
+</div>
 </div>
 
 <script type="text/javascript"><!--
