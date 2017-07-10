@@ -149,6 +149,12 @@ class ControllerModuleCallme extends Controller {
 			$data['error_tel'] = '';
 		}
 
+		if (isset($this->error['agreement'])) {
+			$data['error_agreement'] = $this->error['agreement'];
+		} else {
+			$data['error_agreement'] = '';
+		}
+
 		if (isset($this->error['enquiry'])) {
 			$data['error_enquiry'] = $this->error['enquiry'];
 		} else {
@@ -234,6 +240,10 @@ class ControllerModuleCallme extends Controller {
 
 		 if ((utf8_strlen($this->request->post['tel']) < 3) || (utf8_strlen($this->request->post['tel']) > 32)) {
       		$this->error['tel'] = $this->language->get('error_tel');
+    	}
+
+		if ($this->request->post['agreement'] <> 1) {
+      		$this->error['agreement'] = 'необходимо дать согласие на обработку данных';
     	}
 
 		if ($callme_module_cfg['capcha']) {

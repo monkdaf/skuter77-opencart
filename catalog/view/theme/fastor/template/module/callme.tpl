@@ -26,7 +26,7 @@
 $(document).ready(function() {
 	$('.callme').on('click', function() {
 		var product_id = ($(this).data("product_id") > 0) ? $(this).data("product_id") : '';
-		$('.callme_load').html('<iframe src="./index.php?route=module/callme/open&prod_id='+ product_id +'" width="300" height="'+<?php echo $callme_setting['height'] - 100; ?>+'" frameborder="0">Загрузка</iframe>');
+		$('.callme_load').html('<iframe src="./index.php?route=module/callme/open&prod_id='+ product_id +'" width="300" height="'+<?php echo $callme_setting['height'] - 30; ?>+'" frameborder="0">Загрузка</iframe>');
 			$('#callme_modal').modal('show');
 	});
 });
@@ -137,9 +137,36 @@ button:hover {background:#3C963B   !important; color:#fff !important;}
 		</div>
 		<BR>
 		<?php } ?>
+
+<!-- checkbox private policy -->
+<script type="text/javascript">
+
+
+         function enDis() {
+           var c = document.querySelector('#agreement');
+          if (c.checked) {
+           document.getElementById('btn-submit').removeAttribute('disabled','');
+          } else {
+           document.getElementById('btn-submit').setAttribute('disabled', 'disabled');
+          }
+         }
+</script>
+
+<div class="form-group <?php echo ($error_agreement) ? 'has-error' :''; ?>" >
+  <label for="agreement_checkbox" class="col-sm-2 control-label">Политика конфиденциальности</label>
+  <div class="col-sm-10">
+    <span id="span_checkbox"><label>
+    <input type="checkbox" id="agreement" name="agreement" checked="checked" value="1" onclick="enDis()" />Я прочитал и согласен с правилами <a class="colorbox fancybox agree" href="http://skuter77.ru/index.php?route=information/information/agree&information_id=23" alt="Политика конфиденциальности" target="_blank"><b>политику конфиденциальности</b></a>
+      </label>&nbsp;</span>
+  </div>
+</div>
+
+
+<!-- checkbox private policy -->
+
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default"><?php echo $button_send; ?></button>
+				<button type="submit" class="btn btn-default" id="btn-submit"><?php echo $button_send; ?></button>
 			</div>
 		</div>
 		<?php } ?>
