@@ -41,6 +41,22 @@
                 <?php foreach ($hidden_rows as $row) { ?>
                   <?php echo $row ?>
                 <?php } ?>
+<!-- checkbox private policy -->
+<script type="text/javascript">
+         function enDis() {
+           var c = document.querySelector('#agreement');
+          if (c.checked) {
+           document.getElementById('simpleregister_button_confirm').removeAttribute('disabled','');
+          } else {
+           document.getElementById('simpleregister_button_confirm').setAttribute('disabled', 'disabled');
+          }
+         }
+</script>
+    <span id="span_checkbox"><label>
+    <input type="checkbox" id="agreement" name="agreement" checked="checked" value="1" onclick="enDis()" /><small>Ставя отметку, я даю свое согласие на обработку моих персональных данных в соответствии с законом №152-ФЗ "О персональных данных" от 27.07.2006 и принимаю условия <a class="colorbox fancybox agree" href="http://skuter77.ru/index.php?route=information/information/agree&information_id=23" alt="Политика конфиденциальности" target="_blank"><b>политики конфиденциальности</b></a></small>
+      </label>&nbsp;</span>
+<!-- checkbox private policy -->
+
             </div>
             <div class="simpleregister-button-block buttons">
                 <div class="simpleregister-button-right">
