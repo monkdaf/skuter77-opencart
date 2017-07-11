@@ -26,7 +26,7 @@ $_['text_reward']                    = 'Бонусных баллов: %s';
 $_['text_items']                     = 'Товаров: %s (%s)';
 $_['text_empty']                     = 'Ваша корзина пуста!';
 $_['text_login']                     = 'Необходимо войти в <a href="%s">личный кабинет</a> или создать <a href="%s">учетную запись</a> чтобы видеть цены!';
-$_['text_agree']                     = 'Я прочитал и согласен с правилами <a class="colorbox fancybox agree" href="%s" alt="%s"><b>%s</b></a>';
+$_['text_agree']                     = 'Я даю свое согласие на обработку моих персональных данных в соответствии с законом №152-ФЗ "О персональных данных" от 27.07.2006, прочитал и согласен с правилами <a class="colorbox fancybox agree" href="%s" alt="%s"><b>%s</b></a>';
 $_['text_agree_shoppica']            = 'Я прочитал и согласен с правилами <a class="s_main_color" rel="prettyPhoto[ajax]" href="%s&iframe=true" alt="%s"><b>%s</b></a>';
 $_['text_private']                   = 'Физ. лицо';
 $_['text_company']                   = 'Юр. лицо';
